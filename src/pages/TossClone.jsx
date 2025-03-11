@@ -84,8 +84,30 @@ const HeaderLogo = styled.div`
     justify-content: center;
   }
 `;
+const HeaderLogo2 = styled.div`
+  width: 76px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* 정중앙 정렬 */
+  }
+`;
 
 const CleanLogo = styled.div`
+  width: 65.63px;
+  height: 60px;
+  display: flex;
+  background-image: url(${Logo});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const CleanLogo2 = styled.div`
   width: 65.63px;
   height: 60px;
   display: flex;
@@ -138,6 +160,16 @@ const MenuName = styled.div`
     color: #2c57e4;
   }
 `;
+const MenuBtnDiv = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 60px;
+    display: ${({ isOpen }) => (isOpen ? "none" : "flex")};
+    align-items: center;
+    justify-content: space-between; /* 왼쪽과 중앙 정렬을 위해 변경 */
+    position: relative;
+  }
+`;
 
 const MenuButton = styled.button`
   display: none;
@@ -147,7 +179,10 @@ const MenuButton = styled.button`
   cursor: pointer;
 
   @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
     display: block;
+    align-self: flex-start; /* 왼쪽 정렬 */
   }
 `;
 
@@ -383,7 +418,12 @@ const TossClone = () => {
 
   return (
     <>
-      <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
+      <MenuBtnDiv>
+        <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
+        <HeaderLogo2>
+          <CleanLogo2 />
+        </HeaderLogo2>
+      </MenuBtnDiv>
       <Header hasShadow={hasShadow} isOpen={menuOpen}>
         <HeaderWrap>
           <HeaderBox>
