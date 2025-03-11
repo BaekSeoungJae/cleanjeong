@@ -81,7 +81,7 @@ const HeaderLogo = styled.div`
     width: 100%;
     height: 10%;
     margin-right: 0;
-    justify-content: center;
+    justify-content: flex-end;
   }
 `;
 const HeaderLogo2 = styled.div`
@@ -105,6 +105,9 @@ const CleanLogo = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const CleanLogo2 = styled.div`
@@ -437,7 +440,7 @@ const TossClone = () => {
         <HeaderWrap>
           <HeaderBox>
             <HeaderLogo>
-              <CleanLogo></CleanLogo>
+              <CleanLogo />
               <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
             </HeaderLogo>
             <HeaderMenu>
