@@ -400,12 +400,12 @@ const Slide = styled(SwiperSlide)`
     height: 100%;
     background: ${({ theme }) => theme.overlay}; /* 다크 모드의 오버레이 색상 */
     transition: background-color 0.5s ease;
-    pointer-events: none; /* Ensure it does not interfere with mouse events */
+    pointer-events: none;
   }
 `;
 
 const CallButton = styled.a`
-  display: none; /* 기본적으로 숨김 */
+  display: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -418,6 +418,7 @@ const CallButton = styled.a`
   text-decoration: none;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  z-index: 999;
 
   &:hover {
     background-color: #1a3ca1;
@@ -516,9 +517,7 @@ const TossClone = () => {
         </BtnDiv>
         <DownBtn></DownBtn>
       </MainBody>
-      <SameBody>
-        <CallButton href="tel:010-2554-6626">📞 전화상담</CallButton>
-      </SameBody>
+      <SameBody></SameBody>
       <SameBody>
         <StyledSwiper
           key="swiper"
@@ -534,6 +533,8 @@ const TossClone = () => {
         </StyledSwiper>
       </SameBody>
       <SameBody></SameBody>
+
+      <CallButton href="tel:010-2554-6626">📞 전화상담</CallButton>
       <Container />
     </>
   );
