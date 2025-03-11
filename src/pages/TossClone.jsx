@@ -160,6 +160,7 @@ const MenuName = styled.div`
     color: #2c57e4;
   }
 `;
+
 const MenuBtnDiv = styled.div`
   @media (max-width: 768px) {
     width: 100%;
@@ -167,7 +168,12 @@ const MenuBtnDiv = styled.div`
     display: ${({ isOpen }) => (isOpen ? "none" : "flex")};
     align-items: center;
     justify-content: space-between; /* 왼쪽과 중앙 정렬을 위해 변경 */
-    position: relative;
+    position: fixed;
+
+    background-color: white;
+    z-index: 10;
+    border-bottom: 1px solid transparent;
+    border-color: #e6e6e6;
   }
 `;
 
