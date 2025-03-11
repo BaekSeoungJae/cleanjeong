@@ -229,6 +229,9 @@ const MainText = styled.div`
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
 
+  @media (max-width: 768px) {
+    margin-top: 200px;
+  }
   h1 {
     height: 55px;
     font-size: 63px;
@@ -464,7 +467,8 @@ const TossClone = () => {
       <MainBody>
         <GradientOverlay />
         <MainText isVisible={isVisible}>
-          <h1>쉽고 빠른 청소 예약은</h1>
+          <h1>쉽고 빠른</h1>
+          <h1>청소 예약</h1>
           <h1>클린정</h1>
         </MainText>
         <BtnDiv isVisible={isVisible}>
