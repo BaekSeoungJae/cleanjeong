@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Logo from "../img/클린정.png";
 import Ad1 from "../img/예시1.jpg";
-import Ad2 from "../img/예시2.jpg";
+import Ad2 from "../img/예시3.jpg";
 import MainImage from "../img/예시2.jpg";
 import AppleImage from "../img/apple.png";
 import GoogleImage from "../img/googleplay.png";
@@ -42,6 +42,11 @@ const Header = styled.div`
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
   border-color: ${({ hasShadow }) => (hasShadow ? "#e6e6e6" : "transparent")};
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 100%;
+    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+  }
 `;
 
 const HeaderWrap = styled.div`
@@ -49,12 +54,20 @@ const HeaderWrap = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const HeaderBox = styled.div`
   width: 92%;
   height: 100%;
   display: flex;
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 const HeaderLogo = styled.div`
@@ -64,6 +77,12 @@ const HeaderLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 10%;
+    margin-right: 0;
+    justify-content: center;
+  }
 `;
 
 const CleanLogo = styled.div`
@@ -82,11 +101,24 @@ const HeaderMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
 `;
 
 const MenuBox = styled.div`
   padding: 0 8px;
   white-space: nowrap;
+`;
+
+const MenuBox2 = styled.div`
+  padding: 0 8px;
+  white-space: nowrap;
+  @media (max-width: 768px) {
+    margin-top: 100px;
+  }
 `;
 
 const MenuName = styled.div`
@@ -104,6 +136,18 @@ const MenuName = styled.div`
 
   &:hover {
     color: #2c57e4;
+  }
+`;
+
+const MenuButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 
@@ -156,6 +200,10 @@ const MainText = styled.div`
     font-weight: 700;
     margin-bottom: 15px;
     letter-spacing: -6px;
+
+    @media (max-width: 768px) {
+      font-size: 30px;
+    }
   }
 `;
 
@@ -182,6 +230,11 @@ const BtnDiv = styled.div`
   margin-top: 65px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
+  @media (max-width: 768px) {
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+  }
 `;
 
 const AppleBtn = styled.div`
@@ -201,6 +254,10 @@ const AppleBtn = styled.div`
   &:hover {
     background-color: rgba(68, 81, 100, 0.8);
     transition: background-color 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    width: 75%;
+    margin-right: 0px;
   }
 `;
 
@@ -239,6 +296,11 @@ const GoogleBtn = styled.div`
   &:hover {
     background-color: rgba(68, 81, 100, 0.8);
     transition: background-color 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    width: 75%;
+    margin-right: 0px;
+    margin-top: 10px;
   }
 `;
 
@@ -300,6 +362,7 @@ const DownBtn = styled.div``;
 const TossClone = () => {
   const [hasShadow, setHasShadow] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -320,11 +383,13 @@ const TossClone = () => {
 
   return (
     <>
-      <Header hasShadow={hasShadow}>
+      <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
+      <Header hasShadow={hasShadow} isOpen={menuOpen}>
         <HeaderWrap>
           <HeaderBox>
             <HeaderLogo>
               <CleanLogo></CleanLogo>
+              <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
             </HeaderLogo>
             <HeaderMenu>
               <MenuBox>
@@ -345,30 +410,17 @@ const TossClone = () => {
               <MenuBox>
                 <MenuName>업무 안내</MenuName>
               </MenuBox>
-              <MenuBox>
+              <MenuBox2>
                 <LangBox>
                   <MenuName>KOR</MenuName>
                   <span class="css-9hfgjx">|</span>
                   <MenuName>ENG</MenuName>
                 </LangBox>
-              </MenuBox>
+              </MenuBox2>
             </HeaderMenu>
           </HeaderBox>
         </HeaderWrap>
       </Header>
-
-      <StyledSwiper
-        key="swiper"
-        spaceBetween={10}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 5000 }}
-        modules={[Navigation, Pagination, Autoplay]}
-      >
-        <Slide imageurl={Ad1} />
-        <Slide imageurl={Ad2} />
-      </StyledSwiper>
       <MainBody>
         <GradientOverlay />
         <MainText isVisible={isVisible}>
@@ -383,9 +435,23 @@ const TossClone = () => {
             <GoogleLogo></GoogleLogo>Google Play
           </GoogleBtn>
         </BtnDiv>
-        <DownBtn></DownBtn>
+        <DownBtn></DownBtn>{" "}
       </MainBody>
       <SameBody></SameBody>
+      <SameBody>
+        <StyledSwiper
+          key="swiper"
+          spaceBetween={10}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000 }}
+          modules={[Navigation, Pagination, Autoplay]}
+        >
+          <Slide imageurl={Ad1} />
+          <Slide imageurl={Ad2} />
+        </StyledSwiper>
+      </SameBody>
       <SameBody></SameBody>
       <Container />
     </>
