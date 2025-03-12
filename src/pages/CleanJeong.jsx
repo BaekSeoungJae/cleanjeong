@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import Logo from "../img/클린정.png";
 import Ad1 from "../img/예시1.jpg";
@@ -6,11 +6,13 @@ import Ad2 from "../img/예시3.jpg";
 import MainImage from "../img/예시2.jpg";
 import AppleImage from "../img/apple.png";
 import GoogleImage from "../img/googleplay.png";
+import Footer from "./Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import Header from "./Header";
 
 // 애니메이션 키프레임 정의
 const fadeIn = keyframes`
@@ -27,63 +29,6 @@ const Container = styled.div`
   display: flex;
 `;
 
-const Header = styled.div`
-  width: 100%;
-  height: 100px;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  top: 0;
-  left: 0;
-  background-color: white;
-  z-index: 10;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
-  border-color: ${({ hasShadow }) => (hasShadow ? "#e6e6e6" : "transparent")};
-  @media (max-width: 768px) {
-    width: 200px;
-    height: 100%;
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-  }
-`;
-
-const HeaderWrap = styled.div`
-  width: 1140px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-const HeaderBox = styled.div`
-  width: 92%;
-  height: 100%;
-  display: flex;
-  @media (max-width: 768px) {
-    width: 100%;
-    flex-direction: column;
-  }
-`;
-
-const HeaderLogo = styled.div`
-  width: 76px;
-  height: 100%;
-  margin-right: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 10%;
-    margin-right: 0;
-    justify-content: flex-end;
-  }
-`;
 const HeaderLogo2 = styled.div`
   width: 76px;
   height: 100%;
@@ -97,19 +42,6 @@ const HeaderLogo2 = styled.div`
   }
 `;
 
-const CleanLogo = styled.div`
-  width: 65.63px;
-  height: 60px;
-  display: flex;
-  background-image: url(${Logo});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
 const CleanLogo2 = styled.div`
   width: 65.63px;
   height: 60px;
@@ -118,50 +50,6 @@ const CleanLogo2 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-`;
-
-const HeaderMenu = styled.div`
-  width: 949px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  @media (max-width: 768px) {
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-  }
-`;
-
-const MenuBox = styled.div`
-  padding: 0 8px;
-  white-space: nowrap;
-`;
-
-const MenuBox2 = styled.div`
-  padding: 0 8px;
-  white-space: nowrap;
-  @media (max-width: 768px) {
-    margin-top: 100px;
-  }
-`;
-
-const MenuName = styled.div`
-  padding: 12px 10px;
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 20px;
-  color: #4e5968;
-  border-radius: 8px;
-  border: 0;
-  cursor: pointer;
-  background-color: transparent;
-  text-decoration: none;
-  text-align: left;
-
-  &:hover {
-    color: #2c57e4;
-  }
 `;
 
 const MenuBtnDiv = styled.div`
@@ -195,16 +83,6 @@ const MenuButton = styled.button`
   }
 `;
 
-const LangBox = styled.div`
-  -webkit-box-align: center;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
-  margin: 0 auto 0 0;
-`;
-
 const MainBody = styled.div`
   width: 100%;
   height: 100vh;
@@ -218,6 +96,7 @@ const MainBody = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 `;
+
 const SameBody = styled.div`
   width: 100%;
   height: 100vh;
@@ -433,11 +312,13 @@ const CallButton = styled.a`
 
 const DownBtn = styled.div``;
 
-const TossClone = () => {
+const CleanJeong = () => {
   const [hasShadow, setHasShadow] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null); // 메뉴 영역을 감지하는 ref
 
+  // 스크롤
   useEffect(() => {
     const handleScroll = () => {
       setHasShadow(window.scrollY > 0);
@@ -455,51 +336,40 @@ const TossClone = () => {
     };
   }, []);
 
+  // 메뉴 바깥 클릭 감지 (단, 메뉴 내부 클릭 시 닫히지 않도록)
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
+
   return (
     <>
       <MenuBtnDiv>
-        <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
+        <div ref={menuRef}>
+          <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
+        </div>
         <HeaderLogo2>
           <CleanLogo2 />
         </HeaderLogo2>
       </MenuBtnDiv>
-      <Header hasShadow={hasShadow} isOpen={menuOpen}>
-        <HeaderWrap>
-          <HeaderBox>
-            <HeaderLogo>
-              <CleanLogo />
-              <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
-            </HeaderLogo>
-            <HeaderMenu>
-              <MenuBox>
-                <MenuName>생활 청소</MenuName>
-              </MenuBox>
-              <MenuBox>
-                <MenuName>입주 청소</MenuName>
-              </MenuBox>
-              <MenuBox>
-                <MenuName>예약 하기</MenuName>
-              </MenuBox>
-              <MenuBox>
-                <MenuName>자주 묻는 질문</MenuName>
-              </MenuBox>
-              <MenuBox>
-                <MenuName>고객 지원</MenuName>
-              </MenuBox>
-              <MenuBox>
-                <MenuName>업무 안내</MenuName>
-              </MenuBox>
-              <MenuBox2>
-                <LangBox>
-                  <MenuName>KOR</MenuName>
-                  <span class="css-9hfgjx">|</span>
-                  <MenuName>ENG</MenuName>
-                </LangBox>
-              </MenuBox2>
-            </HeaderMenu>
-          </HeaderBox>
-        </HeaderWrap>
-      </Header>
+      <div ref={menuRef}>
+        <Header
+          hasShadow={hasShadow}
+          isOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
+      </div>
       <MainBody>
         <GradientOverlay />
         <MainText isVisible={isVisible}>
@@ -533,11 +403,11 @@ const TossClone = () => {
         </StyledSwiper>
       </SameBody>
       <SameBody></SameBody>
-
       <CallButton href="tel:010-2554-6626">📞 전화상담</CallButton>
+      <Footer />
       <Container />
     </>
   );
 };
 
-export default TossClone;
+export default CleanJeong;
