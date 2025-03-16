@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "../img/클린정.png";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -50,7 +51,7 @@ const HeaderBox = styled.div`
   }
 `;
 
-const HeaderLogo = styled.div`
+const HeaderLogo = styled(Link)`
   width: 76px;
   height: 100%;
   margin-right: 24px;
@@ -103,7 +104,7 @@ const MenuBox2 = styled.div`
   }
 `;
 
-const MenuName = styled.div`
+const MenuName = styled(Link)`
   padding: 12px 10px;
   font-size: 17px;
   font-weight: 600;
@@ -150,7 +151,7 @@ const Header = ({ hasShadow, isOpen, setMenuOpen }) => {
     <HeaderContainer hasShadow={hasShadow} isOpen={isOpen}>
       <HeaderWrap>
         <HeaderBox>
-          <HeaderLogo>
+          <HeaderLogo to="/">
             <CleanLogo />
             {/* 메뉴 버튼 (클릭 시 메뉴 열기/닫기) */}
             <MenuButton
@@ -164,22 +165,19 @@ const Header = ({ hasShadow, isOpen, setMenuOpen }) => {
           </HeaderLogo>
           <HeaderMenu onClick={(e) => e.stopPropagation()}>
             <MenuBox>
-              <MenuName>생활 청소</MenuName>
+              <MenuName to="/intro">회사 소개</MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName>입주 청소</MenuName>
+              <MenuName to="/houseclean">입주ㆍ거주 청소</MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName>예약 하기</MenuName>
+              <MenuName>준공 청소</MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName>자주 묻는 질문</MenuName>
+              <MenuName>특수 청소</MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName>고객 지원</MenuName>
-            </MenuBox>
-            <MenuBox>
-              <MenuName>업무 안내</MenuName>
+              <MenuName>문의 하기</MenuName>
             </MenuBox>
             <MenuBox2>
               <LangBox>
