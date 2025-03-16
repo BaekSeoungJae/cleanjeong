@@ -14,7 +14,7 @@ const Container = styled.div`
 const PageShop = () => {
   return (
     <>
-      <Container>입주 거주 청소</Container>
+      <Container>상가 청소</Container>
     </>
   );
 };

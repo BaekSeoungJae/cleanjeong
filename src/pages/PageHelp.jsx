@@ -11,12 +11,12 @@ const Container = styled.div`
   background-color: whitesmoke;
 `;
 
-const PageShop = () => {
+const PageHelp = () => {
   return (
     <>
-      <Container>입주 거주 청소</Container>
+      <Container>문의 하기</Container>
     </>
   );
 };
 
-export default PageShop;
+export default PageHelp;

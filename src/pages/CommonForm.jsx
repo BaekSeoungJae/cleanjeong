@@ -5,6 +5,10 @@ import Footer from "./Footer";
 import Logo from "../img/클린정.png";
 import { Link, Outlet } from "react-router-dom";
 
+const Background = styled.div`
+  min-height: 950px;
+`;
+
 const HeaderLogo = styled(Link)`
   width: 76px;
   height: 100%;
@@ -29,6 +33,7 @@ const CleanLogo = styled.div`
 `;
 
 const MenuBtnDiv = styled.div`
+  display: none;
   @media (max-width: 768px) {
     width: 100%;
     height: 60px;
@@ -81,7 +86,7 @@ const CommonForm = () => {
   }, [menuOpen]);
 
   return (
-    <>
+    <Background>
       <MenuBtnDiv>
         <div ref={menuRef}>
           <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
@@ -95,7 +100,7 @@ const CommonForm = () => {
       </div>
       <Outlet />
       <Footer />
-    </>
+    </Background>
   );
 };
 

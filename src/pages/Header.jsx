@@ -51,7 +51,7 @@ const HeaderBox = styled.div`
   }
 `;
 
-const HeaderLogo = styled(Link)`
+const HeaderLogo = styled.div`
   width: 76px;
   height: 100%;
   margin-right: 24px;
@@ -66,7 +66,7 @@ const HeaderLogo = styled(Link)`
   }
 `;
 
-const CleanLogo = styled.div`
+const CleanLogo = styled(Link)`
   width: 65.63px;
   height: 60px;
   display: flex;
@@ -94,6 +94,9 @@ const HeaderMenu = styled.div`
 const MenuBox = styled.div`
   padding: 0 8px;
   white-space: nowrap;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+  }
 `;
 
 const MenuBox2 = styled.div`
@@ -119,6 +122,10 @@ const MenuName = styled(Link)`
 
   &:hover {
     color: #2c57e4;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
   }
 `;
 const LangBox = styled.div`
@@ -151,8 +158,8 @@ const Header = ({ hasShadow, isOpen, setMenuOpen }) => {
     <HeaderContainer hasShadow={hasShadow} isOpen={isOpen}>
       <HeaderWrap>
         <HeaderBox>
-          <HeaderLogo to="/">
-            <CleanLogo />
+          <HeaderLogo>
+            <CleanLogo to="/" />
             {/* 메뉴 버튼 (클릭 시 메뉴 열기/닫기) */}
             <MenuButton
               onClick={(e) => {
@@ -165,19 +172,29 @@ const Header = ({ hasShadow, isOpen, setMenuOpen }) => {
           </HeaderLogo>
           <HeaderMenu onClick={(e) => e.stopPropagation()}>
             <MenuBox>
-              <MenuName to="/intro">회사 소개</MenuName>
+              <MenuName to="/intro" onClick={() => setMenuOpen(false)}>
+                회사 소개
+              </MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName to="/houseclean">입주ㆍ거주 청소</MenuName>
+              <MenuName to="/houseclean" onClick={() => setMenuOpen(false)}>
+                입주ㆍ거주 청소
+              </MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName>준공 청소</MenuName>
+              <MenuName to="/completion" onClick={() => setMenuOpen(false)}>
+                준공 청소
+              </MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName>특수 청소</MenuName>
+              <MenuName to="/special" onClick={() => setMenuOpen(false)}>
+                특수 청소
+              </MenuName>
             </MenuBox>
             <MenuBox>
-              <MenuName>문의 하기</MenuName>
+              <MenuName to="/help" onClick={() => setMenuOpen(false)}>
+                문의 하기
+              </MenuName>
             </MenuBox>
             <MenuBox2>
               <LangBox>

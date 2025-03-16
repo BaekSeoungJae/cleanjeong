@@ -11,12 +11,12 @@ const Container = styled.div`
   background-color: whitesmoke;
 `;
 
-const PageShop = () => {
+const PageSpecial = () => {
   return (
     <>
-      <Container>입주 거주 청소</Container>
+      <Container>특별 청소</Container>
     </>
   );
 };
 
-export default PageShop;
+export default PageSpecial;
