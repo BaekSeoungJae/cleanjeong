@@ -15,8 +15,7 @@ const HeaderContainer = styled.div`
   left: 0;
   background-color: white;
   z-index: 10;
-  border-bottom: 1px solid
-    ${({ hasShadow }) => (hasShadow ? "#e6e6e6" : "transparent")};
+  border-bottom: 1px solid #e7e7e7;
   transition: border-color 0.2s ease;
 
   @media (max-width: 768px) {
@@ -153,9 +152,9 @@ const MenuButton = styled.button`
   }
 `;
 
-const Header = ({ hasShadow, isOpen, setMenuOpen }) => {
+const Header = ({ isOpen, setMenuOpen }) => {
   return (
-    <HeaderContainer hasShadow={hasShadow} isOpen={isOpen}>
+    <HeaderContainer isOpen={isOpen}>
       <HeaderWrap>
         <HeaderBox>
           <HeaderLogo>

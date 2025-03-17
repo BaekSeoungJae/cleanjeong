@@ -25,8 +25,9 @@ const Container = styled.div`
 `;
 
 const MainBody = styled.div`
-  width: 85%;
+  width: 100%;
   height: 100vh;
+  min-width: 1200px;
   min-height: 860px;
   display: flex;
   flex-direction: column;
@@ -63,7 +64,7 @@ const MainTextDiv = styled.div`
   text-align: center;
   flex-direction: column;
   color: #393939;
-  margin-top: 100px;
+  margin-top: 130px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
 
@@ -85,7 +86,8 @@ const Title1 = styled.h1`
 const Title2 = styled.h1`
   font-family: "THE명품명조M", serif;
   height: 35px;
-  font-size: 25px;
+  font-size: 20px;
+  margin-top: 50px;
   letter-spacing: 3px;
 
   @media (max-width: 768px) {
@@ -95,7 +97,7 @@ const Title2 = styled.h1`
 const Title3 = styled.h1`
   font-family: "THE명품명조M", serif;
   height: 35px;
-  font-size: 30px;
+  font-size: 25px;
   letter-spacing: 3px;
 
   @media (max-width: 768px) {
@@ -121,23 +123,61 @@ const BtnDiv = styled.div`
 const LinkBtn = styled(Link)`
   width: 138px;
   min-width: 135px;
-  height: 55px;
+  height: 45px;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  position: relative; /* 🔹 추가: 자식의 absolute 위치 조정을 위해 */
   margin-right: 50px;
-  background-color: rgba(255, 255, 255, 0.7);
-  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #5f5f5f;
   font-size: 18px;
   padding: 11px 22px;
   border-radius: 17px;
   z-index: 2;
   cursor: pointer;
   text-decoration: none;
+  /* 🔹 화살표 기본적으로 숨기기 */
+  &::after,
+  &::before {
+    opacity: 0; /* 기본적으로 안 보이게 설정 */
+    transition: opacity 0.2s ease;
+  }
+  &:hover::after,
+  &:hover::before {
+    opacity: 1;
+    background-color: #000000; /* 선의 색상 */
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 14px; /* 선의 위치 */
+    left: 50%; /* 가운데 정렬 */
+    transform: translateX(-50%);
+    width: 70px; /* 선의 길이 */
+    height: 1px; /* 선의 두께 */
+    background-color: #919191; /* 선의 색상 */
+    border-radius: 2px; /* 선 끝부분 둥글게 */
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 20px; /* 가로선과 같은 위치 */
+    left: calc(50% + 25px); /* 가로선 끝에 맞추기 */
+    width: 12px; /* 대각선 길이 */
+    height: 1px; /* 두께 */
+    background-color: #919191; /* 선의 색상 */
+    transform: rotate(30deg); /* 오른쪽 아래에서 오른쪽 위 방향 */
+    transform-origin: left center; /* 회전 중심을 왼쪽 끝으로 설정 */
+    border-radius: 2px;
+  }
   &:hover {
     background-color: rgba(180, 180, 180, 0.8);
+    color: rgba(0, 0, 0);
     transition: background-color 1s ease;
+    transition: color 0.2s ease;
     transform: scale(1.1);
     transition: transform 0.4s ease;
   }
@@ -193,6 +233,60 @@ const BottomDiv = styled.div`
   background-color: rgb(110, 138, 165);
 `;
 
+const LefttSide = styled.div`
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const LeftText = styled.div`
+  width: 90%;
+  height: 40%;
+  font-size: 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+`;
+const LeftNum = styled.div`
+  width: 90%;
+  height: 50%;
+  font-size: 27px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: white;
+`;
+
+const MidLine = styled.div`
+  width: 5%;
+  height: 40%;
+  border-right: 1px solid white;
+`;
+
+const RightSide = styled.div`
+  width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const RightText = styled.div`
+  width: 90%;
+  height: 17%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  font-size: 11px;
+  color: #dbdbdb;
+`;
+
 const CleanJeong = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -231,7 +325,27 @@ const CleanJeong = () => {
             <Title3>그곳에 고요한 행복이 흐릅니다.</Title3>
           </MainTextDiv>
         </TopDiv>
-        <BottomDiv></BottomDiv>
+        <BottomDiv>
+          <LefttSide>
+            <LeftText>연중무휴 지금 신청하기</LeftText>
+            <LeftNum>010-6754-6626</LeftNum>
+          </LefttSide>
+          <MidLine />
+          <RightSide>
+            <RightText>
+              신혼희망타운은 혼인신고 7년 이내의 부부로 입주 모집 공고일 기준
+              7년 이내면 가능합니다
+            </RightText>
+            <RightText>
+              예비 신혼부부도 청약 시 접수하고 모집공고 가능하며, 1년이내에
+              가족관계증명서를 통한 증명이 필요합니다
+            </RightText>
+            <RightText>
+              소득기준은 도시근로자 월 평균소득 맞벌이 130% 혼벌이 120%로 17년도
+              3인 기준으로 650만원 미만인 경우 가능합니다
+            </RightText>
+          </RightSide>
+        </BottomDiv>
       </MainBody>
       <SameBody>1</SameBody>
       <SameBody>2</SameBody>
