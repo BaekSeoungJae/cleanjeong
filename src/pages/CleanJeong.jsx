@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
+import DanjoFont from "../fonts/Danjo-bold-Regular.otf"; // 폰트 파일 import
 
 // 애니메이션 키프레임 정의
 const fadeIn = keyframes`
@@ -27,7 +28,6 @@ const Container = styled.div`
 const MainBody = styled.div`
   width: 100%;
   height: 100vh;
-  min-width: 1200px;
   min-height: 860px;
   display: flex;
   flex-direction: column;
@@ -74,7 +74,12 @@ const MainTextDiv = styled.div`
 `;
 
 const Title1 = styled.h1`
-  font-family: "THE명품명조M", serif;
+  @font-face {
+    font-family: "DanjoBold";
+    src: url(${DanjoFont}) format("opentype");
+  }
+
+  font-family: "DanjoBold";
   height: 35px;
   font-size: 35px;
   letter-spacing: 3px;
@@ -84,7 +89,6 @@ const Title1 = styled.h1`
   }
 `;
 const Title2 = styled.h1`
-  font-family: "THE명품명조M", serif;
   height: 35px;
   font-size: 20px;
   margin-top: 50px;
@@ -95,7 +99,6 @@ const Title2 = styled.h1`
   }
 `;
 const Title3 = styled.h1`
-  font-family: "THE명품명조M", serif;
   height: 35px;
   font-size: 25px;
   letter-spacing: 3px;

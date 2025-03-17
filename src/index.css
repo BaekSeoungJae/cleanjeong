@@ -1,13 +1,34 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif, "GmarketSansLight";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@font-face {
+  font-family: "GmarketSansLight";
+  font-weight: normal;
+  src: url("./fonts/GmarketSansLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  font-weight: normal;
+  src: url("./fonts/GmarketSansMedium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "GmarketSansBold";
+  font-weight: normal;
+  src: url("./fonts/GmarketSansBold.otf") format("opentype");
+}
+body {
+  font-family: "GmarketSansLight";
 }
