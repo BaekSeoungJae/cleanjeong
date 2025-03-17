@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
-import DanjoFont from "../fonts/Danjo-bold-Regular.otf"; // 폰트 파일 import
+import SeoulHangangEB from "../fonts/SeoulHangangL.ttf"; // 폰트 파일 import
 
 // 애니메이션 키프레임 정의
 const fadeIn = keyframes`
@@ -69,17 +69,17 @@ const MainTextDiv = styled.div`
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
 
   @media (max-width: 768px) {
-    margin-top: 200px;
+    display: none;
   }
 `;
 
 const Title1 = styled.h1`
   @font-face {
-    font-family: "DanjoBold";
-    src: url(${DanjoFont}) format("opentype");
+    font-family: "SeoulHangangEB";
+    src: url(${SeoulHangangEB}) format("truetype");
   }
 
-  font-family: "DanjoBold";
+  font-family: "SeoulHangangEB";
   height: 35px;
   font-size: 35px;
   letter-spacing: 3px;
@@ -113,13 +113,13 @@ const BtnDiv = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 350px;
+  margin-top: 390px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
   @media (max-width: 768px) {
     align-items: center;
     flex-direction: column;
-    margin-top: 200px;
+    margin-top: 130px;
   }
 `;
 
@@ -224,6 +224,9 @@ const CallButton = styled.a`
 const TopDiv = styled.div`
   width: 80%;
   height: 88%;
+  @media (max-width: 768px) {
+    height: 80%;
+  }
 `;
 
 const BottomDiv = styled.div`
@@ -234,6 +237,10 @@ const BottomDiv = styled.div`
   flex-direction: row;
   justify-content: center;
   background-color: rgb(110, 138, 165);
+  @media (max-width: 768px) {
+    height: 20%;
+    flex-direction: column;
+  }
 `;
 
 const LefttSide = styled.div`
@@ -243,6 +250,10 @@ const LefttSide = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 50%;
+  }
 `;
 
 const LeftText = styled.div`
@@ -253,6 +264,10 @@ const LeftText = styled.div`
   align-items: flex-end;
   justify-content: center;
   color: white;
+  @media (max-width: 768px) {
+    justify-content: center;
+    font-size: 14px;
+  }
 `;
 const LeftNum = styled.div`
   width: 90%;
@@ -262,12 +277,20 @@ const LeftNum = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
   color: white;
+  @media (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+  }
 `;
 
 const MidLine = styled.div`
   width: 5%;
   height: 40%;
   border-right: 1px solid white;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const RightSide = styled.div`
@@ -277,6 +300,10 @@ const RightSide = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 50%;
+  }
 `;
 
 const RightText = styled.div`
@@ -288,6 +315,13 @@ const RightText = styled.div`
   flex-direction: row;
   font-size: 11px;
   color: #dbdbdb;
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 33%;
+    font-size: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 const CleanJeong = () => {
@@ -352,8 +386,7 @@ const CleanJeong = () => {
       </MainBody>
       <SameBody>1</SameBody>
       <SameBody>2</SameBody>
-      <SameBody></SameBody>
-      <CallButton href="tel:010-2554-6626">📞 전화상담</CallButton>
+      <CallButton href="tel:010-6754-6626">📞 전화상담</CallButton>
     </Container>
   );
 };

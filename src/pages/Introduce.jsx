@@ -36,7 +36,7 @@ const ImageBox = styled.div`
 `;
 
 const StyledSwiper = styled(Swiper)`
-  width: 80%;
+  width: 90%;
   height: 80%;
   border-radius: 10px;
   .swiper-pagination {

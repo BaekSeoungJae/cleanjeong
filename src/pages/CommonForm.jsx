@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
 import Logo from "../img/클린정.png";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 const Background = styled.div`
   min-height: 950px;
@@ -67,6 +67,12 @@ const MenuButton = styled.button`
 const CommonForm = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // 메뉴 영역을 감지하는 ref
+  const location = useLocation(); // 🔹 현재 페이지의 경로 감지
+
+  // 📌 페이지 이동 시 최상단으로 스크롤 이동
+  useEffect(() => {
+    window.scrollTo(0, 0); // 페이지 최상단으로 이동
+  }, [location.pathname]); // 🔹 경로가 변경될 때마다 실행
 
   // 메뉴 바깥 클릭 감지 (단, 메뉴 내부 클릭 시 닫히지 않도록)
   useEffect(() => {

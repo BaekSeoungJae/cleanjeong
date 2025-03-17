@@ -11,18 +11,29 @@ const Container = styled.div`
   align-items: center;
   flex-direction: row;
   background-color: #1e5acb;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const LogoSide = styled.div`
   width: 15%;
   height: 95%;
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 20%;
+  }
 `;
+
 const HeaderLogo = styled(Link)`
   width: 60%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const CleanLogo = styled.div`
@@ -36,7 +47,13 @@ const CleanLogo = styled.div`
   background-position: center;
   background-color: white;
   border-radius: 100px;
+  @media (max-width: 768px) {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+  }
 `;
+
 const LeftSide = styled.div`
   width: 30%;
   height: 70%;
@@ -45,6 +62,11 @@ const LeftSide = styled.div`
   align-items: flex-start;
   flex-direction: column;
   border-right: 1px solid white;
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 70%;
+    border-right: none;
+  }
 `;
 
 const LeftText = styled.div`
@@ -56,6 +78,7 @@ const LeftText = styled.div`
   font-size: 12px;
   color: white;
 `;
+
 const LeftText2 = styled.div`
   width: 50%;
   height: 15%;
@@ -66,7 +89,11 @@ const LeftText2 = styled.div`
   color: white;
   margin-top: 5px;
   border-top: 1px solid white;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
+
 const RightSide = styled.div`
   width: 45%;
   height: 95%;
@@ -74,6 +101,9 @@ const RightSide = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Footer = () => {
