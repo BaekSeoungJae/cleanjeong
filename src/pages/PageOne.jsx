@@ -11,7 +11,7 @@ const Container = styled.div`
   background-color: whitesmoke;
 `;
 
-const PageShop = () => {
+const PageOne = () => {
   return (
     <>
       <Container>입주 거주 청소</Container>
@@ -19,4 +19,4 @@ const PageShop = () => {
   );
 };
 
-export default PageShop;
+export default PageOne;
