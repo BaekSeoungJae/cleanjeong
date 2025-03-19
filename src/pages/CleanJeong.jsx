@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import THEmpgtM from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
+import THEmpgtB from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
 import THEmpgtL from "../fonts/THEmpgtL.otf"; // 폰트 파일 import
 import SCDream3 from "../fonts/SCDream3.otf"; // 폰트 파일 import
 import SCDream6 from "../fonts/SCDream6.otf"; // 폰트 파일 import
@@ -68,15 +69,16 @@ const MainTextDiv = styled.div`
 const Title1 = styled.h1`
   @font-face {
     font-family: "THEmpgtM";
-    src: url(${THEmpgtM}) format("opentype");
+    src: url(${THEmpgtB}) format("opentype");
   }
 
   font-family: "THEmpgtM";
   height: 35px;
   font-size: 48px;
-  letter-spacing: -5px;
-  transform: scaleY(0.95);
-  font-weight: 400;
+  letter-spacing: -7px;
+  transform: scaleY(0.9);
+  transform: scaleX(0.95);
+  font-weight: 500;
   color: #585b5c;
   /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 그림자 설정 */
 
@@ -92,13 +94,13 @@ const Title2 = styled.h1`
   }
 
   font-family: "THEmpgtL";
-  height: 30px;
+  height: 10px;
   font-size: 23px;
   margin-top: 50px;
-  letter-spacing: -3px;
-  transform: scaleY(0.95);
-  font-weight: 500;
-  color: #585b5c;
+  letter-spacing: -4px;
+  transform: scaleY(0.9);
+  font-weight: 300;
+  color: #2d2e2e;
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -111,12 +113,15 @@ const Title3 = styled.h1`
   }
 
   font-family: "THEmpgtL";
-  height: 30px;
-  font-size: 24px;
-  letter-spacing: -3px;
-  transform: scaleY(0.95);
-  font-weight: 400;
-  color: #585b5c;
+  height: 20px;
+  font-size: 29px;
+  letter-spacing: -4px;
+  transform: scaleY(0.9);
+  font-weight: 300;
+  color: #2d2e2e;
+  display: flex;
+
+  align-items: flex-start;
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -407,7 +412,7 @@ const CleanJeong = () => {
       <MainBody>
         <TopDiv>
           <MainTextDiv isVisible={isVisible}>
-            <Title1>깨끗함도 선택할 수 있다면?</Title1>
+            <Title1>'깨끗함'도 선택할 수 있다면?</Title1>
             <Title2>먼지 하나 없는 맑은 공간, </Title2>
             <Title3>그곳에 고요한 행복이 흐릅니다.</Title3>
           </MainTextDiv>
