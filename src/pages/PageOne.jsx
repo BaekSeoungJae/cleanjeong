@@ -12,7 +12,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 `;
 
 const ImageBox = styled.div`
