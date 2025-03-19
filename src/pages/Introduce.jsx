@@ -54,7 +54,7 @@ const StyledSwiper = styled(Swiper)`
     font-size: 1.5rem;
   }
   @media (max-width: 768px) {
-    margin-top: 10px;
+    margin-top: 30px;
   }
 `;
 

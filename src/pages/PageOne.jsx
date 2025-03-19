@@ -17,6 +17,8 @@ import m5 from "../img/mobile/003.png";
 import m1 from "../img/mobile/006.png";
 import m2 from "../img/mobile/007.png";
 import m3 from "../img/mobile/008.png";
+import m6 from "../img/mobile/009.png";
+import m7 from "../img/mobile/010.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -29,6 +31,19 @@ const Container = styled.div`
   justify-content: center;
   background-color: #ffffff;
 `;
+
+const Container2 = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  @media (max-width: 768px) {
+    height: 70vh;
+  }
+`;
 const ContainerM = styled.div`
   width: 100%;
   height: 100vh;
@@ -38,7 +53,7 @@ const ContainerM = styled.div`
   justify-content: center;
   background-color: #ffffff;
   @media (max-width: 768px) {
-    height: 100vh;
+    height: 30vh;
   }
 `;
 
@@ -88,7 +103,30 @@ const StyledSwiper = styled(Swiper)`
     font-size: 1.5rem;
   }
   @media (max-width: 768px) {
-    margin-top: 10px;
+    margin-top: 30px;
+  }
+`;
+const SlideM = styled(SwiperSlide)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  /* transition: background-color 0.5s ease; */
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${({ theme }) => theme.overlay}; /* 다크 모드의 오버레이 색상 */
+    transition: background-color 0.5s ease;
+    pointer-events: none;
   }
 `;
 
@@ -113,6 +151,35 @@ const Slide = styled(SwiperSlide)`
     background: ${({ theme }) => theme.overlay}; /* 다크 모드의 오버레이 색상 */
     transition: background-color 0.5s ease;
     pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+const Slide2 = styled(SwiperSlide)`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  /* transition: background-color 0.5s ease; */
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${({ theme }) => theme.overlay}; /* 다크 모드의 오버레이 색상 */
+    transition: background-color 0.5s ease;
+    pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    display: flex;
   }
 `;
 
@@ -142,19 +209,19 @@ const PageShop = () => {
           autoplay={{ delay: 5000 }}
           modules={[Navigation, Pagination, Autoplay]}
         >
-          <Slide imageurl={isMobile ? m4 : Ad4} />
-          <Slide imageurl={isMobile ? m5 : Ad5} />
+          <SlideM imageurl={isMobile ? m4 : Ad4} />
+          <SlideM imageurl={isMobile ? m5 : Ad5} />
         </StyledSwiper>
       </Container>
       <ContainerM>
         <ImageBox imageurl={isMobile ? m1 : Ad1} />
       </ContainerM>
-      <Container>
+      <Container2>
         <ImageBox imageurl={isMobile ? m2 : Ad2} />
-      </Container>
-      <Container>
+      </Container2>
+      <Container2>
         <ImageBox imageurl={isMobile ? m3 : Ad3} />
-      </Container>
+      </Container2>
       <Container>
         <StyledSwiper
           key="swiper"
@@ -172,6 +239,8 @@ const PageShop = () => {
           <Slide imageurl={Ad13} />
           <Slide imageurl={Ad14} />
           <Slide imageurl={Ad15} />
+          <Slide2 imageurl={m6} />
+          <Slide2 imageurl={m7} />
         </StyledSwiper>
       </Container>
     </>

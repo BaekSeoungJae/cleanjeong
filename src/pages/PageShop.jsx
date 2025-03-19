@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Ad1 from "../img/016.png";
+import m1 from "../img/mobile/011.png";
 
 const Container = styled.div`
   width: 100%;
@@ -10,26 +11,25 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  margin-top: 50px;
 `;
 
 const ImageBox = styled.div`
-  width: 100%;
+  width: 90%;
   height: 90%;
-  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-image: url(${Ad1});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   @media (max-width: 768px) {
-    width: 90%;
-    height: 100%;
+    background-image: url(${m1});
   }
 `;
+
 const PageShop = () => {
   return (
     <>
       <Container>
-        <ImageBox imageurl={Ad1} />
+        <ImageBox />
       </Container>
     </>
   );
