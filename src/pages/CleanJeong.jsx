@@ -397,7 +397,7 @@ const CleanJeong = () => {
       <MainBody>
         <TopDiv>
           <MainTextDiv isVisible={isVisible}>
-            <Title1>깨끗함도 선택할 수 있다면?</Title1>
+            <Title1>'깨끗함'도 선택할 수 있다면?</Title1>
             <Title2>먼지 하나 없는 맑은 공간, </Title2>
             <Title3>그곳에 고요한 행복이 흐릅니다.</Title3>
           </MainTextDiv>
