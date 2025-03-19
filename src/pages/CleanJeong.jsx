@@ -73,11 +73,12 @@ const Title1 = styled.h1`
 
   font-family: "THEmpgtM";
   height: 35px;
-  font-size: 42px;
-  letter-spacing: -1px;
+  font-size: 48px;
+  letter-spacing: -5px;
+  transform: scaleY(0.95);
   font-weight: 400;
   color: #585b5c;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 설정 */
+  /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 그림자 설정 */
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -92,10 +93,11 @@ const Title2 = styled.h1`
 
   font-family: "THEmpgtL";
   height: 30px;
-  font-size: 22px;
+  font-size: 23px;
   margin-top: 50px;
-  letter-spacing: -1px;
-  font-weight: 400;
+  letter-spacing: -3px;
+  transform: scaleY(0.95);
+  font-weight: 500;
   color: #585b5c;
 
   @media (max-width: 768px) {
@@ -111,7 +113,8 @@ const Title3 = styled.h1`
   font-family: "THEmpgtL";
   height: 30px;
   font-size: 24px;
-  letter-spacing: -1px;
+  letter-spacing: -3px;
+  transform: scaleY(0.95);
   font-weight: 400;
   color: #585b5c;
 
