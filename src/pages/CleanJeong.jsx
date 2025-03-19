@@ -241,33 +241,6 @@ const LinkBtn = styled(Link)`
   }
 `;
 
-const CallButton = styled.a`
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #2c57e4;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 12px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  z-index: 999;
-
-  &:hover {
-    background-color: #1a3ca1;
-  }
-
-  @media (max-width: 768px) {
-    display: flex; /* 모바일 화면에서만 보이도록 설정 */
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
 const TopDiv = styled.div`
   width: 80%;
   height: 88%;
@@ -473,7 +446,6 @@ const CleanJeong = () => {
           </RightSide>
         </BottomDiv>
       </MainBody>
-      <CallButton href="tel:010-6754-6626">📞 전화상담</CallButton>
     </Container>
   );
 };
