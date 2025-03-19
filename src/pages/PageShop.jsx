@@ -22,6 +22,7 @@ const ImageBox = styled.div`
   background-position: center;
   @media (max-width: 768px) {
     background-image: url(${m1});
+    margin-top: 30px;
   }
 `;
 

@@ -99,7 +99,7 @@ const Title1 = styled.h1`
     justify-content: center;
     width: 100%;
     font-size: 25px;
-    letter-spacing: -4px;
+    letter-spacing: -3px;
   }
 `;
 
@@ -113,7 +113,7 @@ const Title2 = styled.h1`
   height: 10px;
   font-size: 23px;
   margin-top: 50px;
-  letter-spacing: -4px;
+  letter-spacing: -3px;
   transform: scaleY(0.9);
   font-weight: 300;
   color: #2d2e2e;
@@ -133,7 +133,7 @@ const Title3 = styled.h1`
   font-family: "THEmpgtL";
   height: 20px;
   font-size: 29px;
-  letter-spacing: -4px;
+  letter-spacing: -3px;
   transform: scaleY(0.9);
   font-weight: 300;
   color: #2d2e2e;
@@ -234,7 +234,7 @@ const LinkBtn = styled(Link)`
     width: 65px;
     min-width: 80px;
     height: 30px;
-    font-size: 10px;
+    font-size: 11px;
     margin-right: 0px;
     border-radius: 10px;
     padding: 5px 5px;
