@@ -75,6 +75,8 @@ const Title1 = styled.h1`
   height: 35px;
   font-size: 42px;
   letter-spacing: 3px;
+  font-weight: 400;
+  color: #585b5c;
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -89,9 +91,11 @@ const Title2 = styled.h1`
 
   font-family: "THEmpgtL";
   height: 35px;
-  font-size: 20px;
+  font-size: 21px;
   margin-top: 50px;
   letter-spacing: 3px;
+  font-weight: 500;
+  color: #585b5c;
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -107,6 +111,8 @@ const Title3 = styled.h1`
   height: 35px;
   font-size: 23px;
   letter-spacing: 3px;
+  font-weight: 400;
+  color: #585b5c;
 
   @media (max-width: 768px) {
     font-size: 15px;
