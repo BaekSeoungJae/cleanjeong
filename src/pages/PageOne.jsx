@@ -24,6 +24,16 @@ const Container = styled.div`
   justify-content: center;
   background-color: #ffffff;
 `;
+const Container2 = styled.div`
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  margin-top: 100px;
+`;
 
 const ImageBox = styled.div`
   width: 90%;
@@ -94,7 +104,7 @@ const Slide = styled(SwiperSlide)`
 const PageShop = () => {
   return (
     <>
-      <Container>
+      <Container2>
         <StyledSwiper
           key="swiper"
           spaceBetween={10}
@@ -107,7 +117,7 @@ const PageShop = () => {
           <Slide imageurl={Ad4} />
           <Slide imageurl={Ad5} />
         </StyledSwiper>
-      </Container>
+      </Container2>
       <Container>
         <ImageBox imageurl={Ad1} />
       </Container>

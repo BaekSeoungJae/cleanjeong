@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Ad1 from "../img/016.png";
 
 const Container = styled.div`
   width: 100%;
@@ -8,13 +9,28 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: whitesmoke;
+  background-color: #ffffff;
+  margin-top: 50px;
 `;
 
+const ImageBox = styled.div`
+  width: 100%;
+  height: 90%;
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 100%;
+  }
+`;
 const PageShop = () => {
   return (
     <>
-      <Container>상가 청소</Container>
+      <Container>
+        <ImageBox imageurl={Ad1} />
+      </Container>
     </>
   );
 };

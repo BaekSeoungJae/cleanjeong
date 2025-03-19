@@ -186,6 +186,11 @@ const Header = ({ isOpen, setMenuOpen }) => {
               </MenuName>
             </MenuBox>
             <MenuBox>
+              <MenuName to="/shop" onClick={() => setMenuOpen(false)}>
+                상가 청소
+              </MenuName>
+            </MenuBox>
+            <MenuBox>
               <MenuName to="/special" onClick={() => setMenuOpen(false)}>
                 특수 청소
               </MenuName>
