@@ -318,7 +318,8 @@ const MainNum = styled.div`
   font-family: "SCDream6";
   width: 80%;
   height: 50%;
-  font-size: 27px;
+  font-size: 34px;
+  font-weight: 100;
   display: flex;
   align-items: center;
   justify-content: flex-start;

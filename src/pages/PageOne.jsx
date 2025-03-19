@@ -26,8 +26,8 @@ const Container = styled.div`
 `;
 
 const ImageBox = styled.div`
-  width: 90%;
-  height: 90%;
+  width: 85%;
+  height: 95%;
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
@@ -42,7 +42,7 @@ const StyledSwiper = styled(Swiper)`
   width: 95%;
   height: 80%;
   /* border-radius: 10px; */
-  margin-top: 100px;
+  margin-top: 120px;
   .swiper-pagination {
     padding: 1px;
   }
