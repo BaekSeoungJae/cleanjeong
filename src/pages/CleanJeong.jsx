@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import MainImage from "../img/메인배경.jpg";
+import MainImage from "../img/메인배경.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -35,8 +35,8 @@ const MainBody = styled.div`
   justify-content: flex-start;
   position: relative;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
     ),
     url(${MainImage});
   background-size: cover;
@@ -64,7 +64,7 @@ const MainTextDiv = styled.div`
   text-align: center;
   flex-direction: column;
   color: #393939;
-  margin-top: 130px;
+  margin-top: 400px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
 
@@ -113,7 +113,7 @@ const BtnDiv = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 390px;
+  margin-top: 150px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
   @media (max-width: 768px) {
@@ -349,6 +349,11 @@ const CleanJeong = () => {
     <Container>
       <MainBody>
         <TopDiv>
+          <MainTextDiv isVisible={isVisible}>
+            <Title1>깨끗함도 선택할 수 있다면?</Title1>
+            <Title2>먼지 하나 없는 맑은 공간, </Title2>
+            <Title3>그곳에 고요한 행복이 흐릅니다.</Title3>
+          </MainTextDiv>
           <BtnDiv isVisible={isVisible}>
             <LinkBtn to="/intro">회사소개</LinkBtn>
             <LinkBtn to="/houseclean">입주ㆍ거주 청소</LinkBtn>
@@ -356,11 +361,6 @@ const CleanJeong = () => {
             <LinkBtn to="/special">특수 청소</LinkBtn>
             <LinkBtn to="/shop">상가 청소</LinkBtn>
           </BtnDiv>
-          <MainTextDiv isVisible={isVisible}>
-            <Title1>깨끗함도 선택할 수 있다면?</Title1>
-            <Title2>먼지 하나 없는 맑은 공간, </Title2>
-            <Title3>그곳에 고요한 행복이 흐릅니다.</Title3>
-          </MainTextDiv>
         </TopDiv>
         <BottomDiv>
           <LefttSide>
