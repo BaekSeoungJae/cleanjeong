@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import MainImage from "../img/메인배경.png";
+import MainImageM from "../img/메인배경M.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
-import THEmpgtM from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
+// import THEmpgtM from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
 import THEmpgtB from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
 import THEmpgtL from "../fonts/THEmpgtL.otf"; // 폰트 파일 import
 import SCDream3 from "../fonts/SCDream3.otf"; // 폰트 파일 import
@@ -46,6 +47,15 @@ const MainBody = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  @media (max-width: 768px) {
+    min-height: 600px;
+    justify-content: center;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.6)
+      ),
+      url(${MainImageM});
+  }
 `;
 
 const MainTextDiv = styled.div`
@@ -62,7 +72,9 @@ const MainTextDiv = styled.div`
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
 
   @media (max-width: 768px) {
-    display: none;
+    height: 60%;
+    margin-top: 0px;
+    justify-content: flex-end;
   }
 `;
 
@@ -71,7 +83,6 @@ const Title1 = styled.h1`
     font-family: "THEmpgtM";
     src: url(${THEmpgtB}) format("opentype");
   }
-
   font-family: "THEmpgtM";
   height: 35px;
   font-size: 48px;
@@ -83,7 +94,12 @@ const Title1 = styled.h1`
   /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 그림자 설정 */
 
   @media (max-width: 768px) {
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 25px;
+    letter-spacing: -4px;
   }
 `;
 
@@ -103,6 +119,8 @@ const Title2 = styled.h1`
   color: #2d2e2e;
 
   @media (max-width: 768px) {
+    width: 100%;
+    height: 15px;
     font-size: 15px;
   }
 `;
@@ -120,11 +138,13 @@ const Title3 = styled.h1`
   font-weight: 300;
   color: #2d2e2e;
   display: flex;
-
   align-items: flex-start;
 
   @media (max-width: 768px) {
-    font-size: 15px;
+    width: 100%;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -138,8 +158,10 @@ const BtnDiv = styled.div`
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
   @media (max-width: 768px) {
     align-items: center;
-    flex-direction: column;
-    margin-top: 130px;
+    flex-wrap: wrap;
+    height: 12%;
+    margin-top: 50px;
+    gap: 15px; /* ✅ 추가: 버튼 간 간격 조절 */
   }
 `;
 
@@ -209,8 +231,13 @@ const LinkBtn = styled(Link)`
     margin-right: 0;
   }
   @media (max-width: 768px) {
+    width: 65px;
+    min-width: 80px;
+    height: 30px;
+    font-size: 10px;
     margin-right: 0px;
-    margin-top: 30px;
+    border-radius: 10px;
+    padding: 5px 5px;
   }
 `;
 
@@ -244,8 +271,10 @@ const CallButton = styled.a`
 const TopDiv = styled.div`
   width: 80%;
   height: 88%;
+  display: flex;
   @media (max-width: 768px) {
-    height: 80%;
+    height: 100%;
+    flex-direction: column;
   }
 `;
 
@@ -258,8 +287,7 @@ const BottomDiv = styled.div`
   justify-content: center;
   background-color: rgb(110, 138, 165);
   @media (max-width: 768px) {
-    height: 20%;
-    flex-direction: column;
+    display: none;
   }
 `;
 
