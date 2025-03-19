@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Ad1 from "../img/004.png";
 import Ad2 from "../img/005.png";
+import m1 from "../img/mobile/004.png";
+import m2 from "../img/mobile/005.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -15,26 +17,13 @@ const Container = styled.div`
   background-color: #ffffff;
   margin-bottom: 100px;
   @media (max-width: 768px) {
-    height: 45vh;
+    margin-bottom: 10px;
   }
 `;
 
-// const ImageBox = styled.div`
-//   width: 80%;
-//   height: 75%;
-//   background-image: ${({ imageurl }) => `url(${imageurl})`};
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   @media (max-width: 768px) {
-//     width: 90%;
-//     height: 100%;
-//   }
-// `;
-
 const StyledSwiper = styled(Swiper)`
   width: 95%;
-  height: 80%;
+  height: 90%;
   border-radius: 10px;
   margin-top: 100px;
   .swiper-pagination {
@@ -42,10 +31,14 @@ const StyledSwiper = styled(Swiper)`
   }
   .swiper-pagination-bullet {
     background: #1e5acb; // 페이지네이션 점 색상 변경
-    width: 0.5vw;
-    height: 1vh;
+    width: 10px;
+    height: 10px;
     &:hover {
       opacity: 0.7;
+    }
+    @media (max-width: 768px) {
+      width: 10px;
+      height: 10px;
     }
   }
   .swiper-button-next,
@@ -59,6 +52,9 @@ const StyledSwiper = styled(Swiper)`
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 10px;
   }
 `;
 
@@ -86,6 +82,18 @@ const Slide = styled(SwiperSlide)`
   }
 `;
 const Introduce = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // 기본값 설정
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // 화면 크기 체크
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
       <Container>
@@ -98,8 +106,8 @@ const Introduce = () => {
           autoplay={{ delay: 5000 }}
           modules={[Navigation, Pagination, Autoplay]}
         >
-          <Slide imageurl={Ad1} />
-          <Slide imageurl={Ad2} />
+          <Slide imageurl={isMobile ? m1 : Ad1} />
+          <Slide imageurl={isMobile ? m2 : Ad2} />
         </StyledSwiper>
       </Container>
     </>

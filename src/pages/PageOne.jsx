@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Ad1 from "../img/006.png";
 import Ad2 from "../img/007.png";
@@ -12,6 +12,11 @@ import Ad12 from "../img/012.png";
 import Ad13 from "../img/013.png";
 import Ad14 from "../img/014.png";
 import Ad15 from "../img/015.png";
+import m4 from "../img/mobile/002.png";
+import m5 from "../img/mobile/003.png";
+import m1 from "../img/mobile/006.png";
+import m2 from "../img/mobile/007.png";
+import m3 from "../img/mobile/008.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -23,6 +28,18 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+`;
+const ContainerM = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  @media (max-width: 768px) {
+    height: 100vh;
+  }
 `;
 
 const ImageBox = styled.div`
@@ -40,18 +57,22 @@ const ImageBox = styled.div`
 
 const StyledSwiper = styled(Swiper)`
   width: 95%;
-  height: 80%;
-  /* border-radius: 10px; */
-  margin-top: 120px;
+  height: 90%;
+  border-radius: 10px;
+  margin-top: 100px;
   .swiper-pagination {
     padding: 1px;
   }
   .swiper-pagination-bullet {
     background: #1e5acb; // 페이지네이션 점 색상 변경
-    width: 0.5vw;
-    height: 1vh;
+    width: 10px;
+    height: 10px;
     &:hover {
       opacity: 0.7;
+    }
+    @media (max-width: 768px) {
+      width: 10px;
+      height: 10px;
     }
   }
   .swiper-button-next,
@@ -65,6 +86,9 @@ const StyledSwiper = styled(Swiper)`
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 10px;
   }
 `;
 
@@ -93,6 +117,19 @@ const Slide = styled(SwiperSlide)`
 `;
 
 const PageShop = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // 기본값 설정
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // 화면 크기 체크
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <Container>
@@ -105,18 +142,18 @@ const PageShop = () => {
           autoplay={{ delay: 5000 }}
           modules={[Navigation, Pagination, Autoplay]}
         >
-          <Slide imageurl={Ad4} />
-          <Slide imageurl={Ad5} />
+          <Slide imageurl={isMobile ? m4 : Ad4} />
+          <Slide imageurl={isMobile ? m5 : Ad5} />
         </StyledSwiper>
       </Container>
+      <ContainerM>
+        <ImageBox imageurl={isMobile ? m1 : Ad1} />
+      </ContainerM>
       <Container>
-        <ImageBox imageurl={Ad1} />
+        <ImageBox imageurl={isMobile ? m2 : Ad2} />
       </Container>
       <Container>
-        <ImageBox imageurl={Ad2} />
-      </Container>
-      <Container>
-        <ImageBox imageurl={Ad3} />
+        <ImageBox imageurl={isMobile ? m3 : Ad3} />
       </Container>
       <Container>
         <StyledSwiper
