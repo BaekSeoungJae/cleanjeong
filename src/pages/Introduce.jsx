@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Ad1 from "../img/예시1.jpg";
-import Ad2 from "../img/예시3.jpg";
-import Intro1 from "../img/intro1.png";
-import Intro2 from "../img/intro2.png";
-import Intro3 from "../img/intro3.png";
-import Intro4 from "../img/intro4.png";
+import Ad1 from "../img/004.png";
+import Ad2 from "../img/005.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -17,6 +13,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+  margin-bottom: 100px;
   @media (max-width: 768px) {
     height: 45vh;
   }
@@ -36,9 +33,10 @@ const ImageBox = styled.div`
 `;
 
 const StyledSwiper = styled(Swiper)`
-  width: 90%;
+  width: 95%;
   height: 80%;
   border-radius: 10px;
+  margin-top: 100px;
   .swiper-pagination {
     padding: 1px;
   }
@@ -72,7 +70,7 @@ const Slide = styled(SwiperSlide)`
   border-radius: 10px;
   /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   &::after {
@@ -90,18 +88,6 @@ const Slide = styled(SwiperSlide)`
 const Introduce = () => {
   return (
     <>
-      <Container>
-        <ImageBox imageurl={Intro1} />
-      </Container>
-      <Container>
-        <ImageBox imageurl={Intro2} />
-      </Container>
-      <Container>
-        <ImageBox imageurl={Intro3} />
-      </Container>
-      <Container>
-        <ImageBox imageurl={Intro4} />
-      </Container>
       <Container>
         <StyledSwiper
           key="swiper"
