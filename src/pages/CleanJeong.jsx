@@ -44,17 +44,6 @@ const MainBody = styled.div`
   background-repeat: no-repeat;
 `;
 
-const SameBody = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  background-color: #ffffff;
-`;
-
 const MainTextDiv = styled.div`
   width: 100%;
   height: 105px;

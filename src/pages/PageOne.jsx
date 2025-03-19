@@ -24,16 +24,6 @@ const Container = styled.div`
   justify-content: center;
   background-color: #ffffff;
 `;
-const Container2 = styled.div`
-  width: 100%;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  margin-top: 100px;
-`;
 
 const ImageBox = styled.div`
   width: 90%;
@@ -49,14 +39,15 @@ const ImageBox = styled.div`
 `;
 
 const StyledSwiper = styled(Swiper)`
-  width: 100%;
-  height: 90%;
+  width: 95%;
+  height: 80%;
   /* border-radius: 10px; */
+  margin-top: 100px;
   .swiper-pagination {
     padding: 1px;
   }
   .swiper-pagination-bullet {
-    background: #8290ee; // 페이지네이션 점 색상 변경
+    background: #1e5acb; // 페이지네이션 점 색상 변경
     width: 0.5vw;
     height: 1vh;
     &:hover {
@@ -65,7 +56,7 @@ const StyledSwiper = styled(Swiper)`
   }
   .swiper-button-next,
   .swiper-button-prev {
-    color: #8290ee; // 네비게이션 버튼 색상 변경
+    color: #1e5acb; // 네비게이션 버튼 색상 변경
     &:hover {
       opacity: 0.6;
     }
@@ -104,7 +95,7 @@ const Slide = styled(SwiperSlide)`
 const PageShop = () => {
   return (
     <>
-      <Container2>
+      <Container>
         <StyledSwiper
           key="swiper"
           spaceBetween={10}
@@ -117,7 +108,7 @@ const PageShop = () => {
           <Slide imageurl={Ad4} />
           <Slide imageurl={Ad5} />
         </StyledSwiper>
-      </Container2>
+      </Container>
       <Container>
         <ImageBox imageurl={Ad1} />
       </Container>

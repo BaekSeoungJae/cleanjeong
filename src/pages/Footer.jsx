@@ -111,7 +111,6 @@ const Footer = () => {
     <>
       <Container>
         <LogoSide>
-          {" "}
           <HeaderLogo to="/">
             <CleanLogo />
           </HeaderLogo>

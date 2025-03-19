@@ -19,18 +19,18 @@ const Container = styled.div`
   }
 `;
 
-const ImageBox = styled.div`
-  width: 80%;
-  height: 75%;
-  background-image: ${({ imageurl }) => `url(${imageurl})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  @media (max-width: 768px) {
-    width: 90%;
-    height: 100%;
-  }
-`;
+// const ImageBox = styled.div`
+//   width: 80%;
+//   height: 75%;
+//   background-image: ${({ imageurl }) => `url(${imageurl})`};
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   @media (max-width: 768px) {
+//     width: 90%;
+//     height: 100%;
+//   }
+// `;
 
 const StyledSwiper = styled(Swiper)`
   width: 95%;
@@ -41,7 +41,7 @@ const StyledSwiper = styled(Swiper)`
     padding: 1px;
   }
   .swiper-pagination-bullet {
-    background: #8290ee; // 페이지네이션 점 색상 변경
+    background: #1e5acb; // 페이지네이션 점 색상 변경
     width: 0.5vw;
     height: 1vh;
     &:hover {
@@ -50,7 +50,7 @@ const StyledSwiper = styled(Swiper)`
   }
   .swiper-button-next,
   .swiper-button-prev {
-    color: #8290ee; // 네비게이션 버튼 색상 변경
+    color: #1e5acb; // 네비게이션 버튼 색상 변경
     &:hover {
       opacity: 0.6;
     }
