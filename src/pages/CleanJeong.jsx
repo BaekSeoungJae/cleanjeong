@@ -5,7 +5,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
-import SeoulHangangEB from "../fonts/SeoulHangangL.ttf"; // 폰트 파일 import
+import THEmpgtM from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
+import THEmpgtL from "../fonts/THEmpgtL.otf"; // 폰트 파일 import
+import SCDream3 from "../fonts/SCDream3.otf"; // 폰트 파일 import
+import SCDream6 from "../fonts/SCDream6.otf"; // 폰트 파일 import
 
 // 애니메이션 키프레임 정의
 const fadeIn = keyframes`
@@ -64,20 +67,27 @@ const MainTextDiv = styled.div`
 
 const Title1 = styled.h1`
   @font-face {
-    font-family: "SeoulHangangEB";
-    src: url(${SeoulHangangEB}) format("truetype");
+    font-family: "THEmpgtM";
+    src: url(${THEmpgtM}) format("opentype");
   }
 
-  font-family: "SeoulHangangEB";
+  font-family: "THEmpgtM";
   height: 35px;
-  font-size: 35px;
+  font-size: 42px;
   letter-spacing: 3px;
 
   @media (max-width: 768px) {
     font-size: 15px;
   }
 `;
+
 const Title2 = styled.h1`
+  @font-face {
+    font-family: "THEmpgtL";
+    src: url(${THEmpgtL}) format("opentype");
+  }
+
+  font-family: "THEmpgtL";
   height: 35px;
   font-size: 20px;
   margin-top: 50px;
@@ -88,8 +98,14 @@ const Title2 = styled.h1`
   }
 `;
 const Title3 = styled.h1`
+  @font-face {
+    font-family: "THEmpgtL";
+    src: url(${THEmpgtL}) format("opentype");
+  }
+
+  font-family: "THEmpgtL";
   height: 35px;
-  font-size: 25px;
+  font-size: 23px;
   letter-spacing: 3px;
 
   @media (max-width: 768px) {
@@ -233,7 +249,7 @@ const BottomDiv = styled.div`
 `;
 
 const LefttSide = styled.div`
-  width: 25%;
+  width: 20%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -259,12 +275,18 @@ const LeftText = styled.div`
   }
 `;
 const LeftNum = styled.div`
+  @font-face {
+    font-family: "SCDream6";
+    src: url(${SCDream6}) format("opentype");
+  }
+
+  font-family: "SCDream6";
   width: 90%;
   height: 50%;
-  font-size: 27px;
+  font-size: 23px;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
   color: white;
   @media (max-width: 768px) {
     align-items: center;
@@ -272,18 +294,36 @@ const LeftNum = styled.div`
     font-size: 25px;
   }
 `;
+const MainNum = styled.div`
+  @font-face {
+    font-family: "SCDream6";
+    src: url(${SCDream6}) format("opentype");
+  }
 
+  font-family: "SCDream6";
+  width: 80%;
+  height: 50%;
+  font-size: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  @media (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+  }
+`;
 const MidLine = styled.div`
-  width: 5%;
+  width: 1%;
   height: 40%;
   border-right: 1px solid white;
   @media (max-width: 768px) {
     display: none;
   }
 `;
-
-const RightSide = styled.div`
-  width: 70%;
+const RightLeft = styled.div`
+  width: 35%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -295,15 +335,33 @@ const RightSide = styled.div`
   }
 `;
 
+const RightSide = styled.div`
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const RightText = styled.div`
+  @font-face {
+    font-family: "SCDream3";
+    src: url(${SCDream3}) format("opentype");
+  }
+
+  font-family: "SCDream3";
   width: 90%;
   height: 17%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-direction: row;
   font-size: 11px;
-  color: #dbdbdb;
+  color: #ffffff;
   @media (max-width: 768px) {
     width: 90%;
     height: 33%;
@@ -353,23 +411,21 @@ const CleanJeong = () => {
         </TopDiv>
         <BottomDiv>
           <LefttSide>
-            <LeftText>연중무휴 지금 신청하기</LeftText>
-            <LeftNum>010-6754-6626</LeftNum>
+            <LeftText>24시간 연중무휴 상담가능</LeftText>
+            <LeftNum>당일 예약도 OK!</LeftNum>
           </LefttSide>
           <MidLine />
+          <RightLeft>
+            <MainNum>010-6754-6626</MainNum>
+          </RightLeft>
           <RightSide>
             <RightText>
-              신혼희망타운은 혼인신고 7년 이내의 부부로 입주 모집 공고일 기준
-              7년 이내면 가능합니다
+              주소 : 세종시 조치원읍 새내10길 95, 205호(세종파인시티)
             </RightText>
-            <RightText>
-              예비 신혼부부도 청약 시 접수하고 모집공고 가능하며, 1년이내에
-              가족관계증명서를 통한 증명이 필요합니다
-            </RightText>
-            <RightText>
-              소득기준은 도시근로자 월 평균소득 맞벌이 130% 혼벌이 120%로 17년도
-              3인 기준으로 650만원 미만인 경우 가능합니다
-            </RightText>
+            <RightText>전화번호 : 010-6754-6626</RightText>
+            <RightText>대표 : 양찬요</RightText>
+            <RightText>이메일 : cyy8300@naver.com</RightText>
+            <RightText>FAX : 0303-3440-2267</RightText>
           </RightSide>
         </BottomDiv>
       </MainBody>
