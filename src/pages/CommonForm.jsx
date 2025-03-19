@@ -7,6 +7,9 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 
 const Background = styled.div`
   min-height: 950px;
+  @media (max-width: 768px) {
+    min-height: 600px;
+  }
 `;
 
 const HeaderLogo = styled(Link)`
