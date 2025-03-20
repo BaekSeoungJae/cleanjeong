@@ -70,8 +70,9 @@ const MenuButton = styled.button`
 const CallButton = styled.a`
   display: none;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 25px;
+  left: 50%; /* 가운데 정렬 */
+  transform: translateX(-50%); /* 정확한 중앙 정렬 */
   background-color: #2c57e4;
   color: white;
   font-size: 18px;

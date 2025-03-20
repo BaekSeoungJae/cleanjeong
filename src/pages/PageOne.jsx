@@ -41,7 +41,7 @@ const Container2 = styled.div`
   justify-content: center;
   background-color: #ffffff;
   @media (max-width: 768px) {
-    height: 70vh;
+    height: 75vh;
   }
 `;
 const ContainerM = styled.div`
@@ -53,7 +53,7 @@ const ContainerM = styled.div`
   justify-content: center;
   background-color: #ffffff;
   @media (max-width: 768px) {
-    height: 30vh;
+    height: 35vh;
   }
 `;
 
@@ -65,7 +65,7 @@ const ImageBox = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   @media (max-width: 768px) {
-    width: 90%;
+    width: 100%;
     height: 100%;
   }
 `;
