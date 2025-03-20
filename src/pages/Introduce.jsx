@@ -52,6 +52,9 @@ const StyledSwiper = styled(Swiper)`
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 1.5rem;
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
   }
   @media (max-width: 768px) {
     margin-top: 30px;

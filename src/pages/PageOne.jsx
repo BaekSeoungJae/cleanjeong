@@ -41,7 +41,7 @@ const Container2 = styled.div`
   justify-content: center;
   background-color: #ffffff;
   @media (max-width: 768px) {
-    height: 75vh;
+    height: 78vh;
   }
 `;
 const ContainerM = styled.div`
@@ -53,7 +53,7 @@ const ContainerM = styled.div`
   justify-content: center;
   background-color: #ffffff;
   @media (max-width: 768px) {
-    height: 35vh;
+    height: 37vh;
   }
 `;
 
@@ -101,6 +101,9 @@ const StyledSwiper = styled(Swiper)`
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 1.5rem;
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
   }
   @media (max-width: 768px) {
     margin-top: 30px;
