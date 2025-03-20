@@ -245,6 +245,7 @@ const TopDiv = styled.div`
   width: 80%;
   height: 88%;
   display: flex;
+  flex-direction: column;
   @media (max-width: 768px) {
     height: 100%;
     flex-direction: column;
