@@ -11,10 +11,17 @@ const Container = styled.div`
   background-color: #ffffff;
 `;
 
+const Text = styled.div`
+  font-size: 12px;
+  color: #000000;
+`;
+
 const PageHelp = () => {
   return (
     <>
-      <Container>문의 하기</Container>
+      <Container>
+        <Text>문의하기 기능이 준비중입니다</Text>
+      </Container>
     </>
   );
 };
