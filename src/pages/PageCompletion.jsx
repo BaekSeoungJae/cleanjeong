@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Ad1 from "../img/017.png";
+import m1 from "../img/mobile/012.png";
 
 const Container = styled.div`
   width: 100%;
@@ -8,13 +10,28 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: whitesmoke;
+  background-color: #ffffff;
+`;
+
+const ImageBox = styled.div`
+  width: 90%;
+  height: 90%;
+  background-image: url(${Ad1});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  @media (max-width: 768px) {
+    background-image: url(${m1});
+    margin-top: 30px;
+  }
 `;
 
 const PageCompletion = () => {
   return (
     <>
-      <Container>준공 청소</Container>
+      <Container>
+        <ImageBox />
+      </Container>
     </>
   );
 };

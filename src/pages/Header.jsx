@@ -98,14 +98,6 @@ const MenuBox = styled.div`
   }
 `;
 
-const MenuBox2 = styled.div`
-  padding: 0 8px;
-  white-space: nowrap;
-  @media (max-width: 768px) {
-    margin-top: 100px;
-  }
-`;
-
 const MenuName = styled(Link)`
   padding: 12px 10px;
   font-size: 17px;
@@ -126,15 +118,6 @@ const MenuName = styled(Link)`
   @media (max-width: 768px) {
     font-size: 18px;
   }
-`;
-const LangBox = styled.div`
-  -webkit-box-align: center;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
-  margin: 0 auto 0 0;
 `;
 
 const MenuButton = styled.button`
@@ -177,12 +160,17 @@ const Header = ({ isOpen, setMenuOpen }) => {
             </MenuBox>
             <MenuBox>
               <MenuName to="/houseclean" onClick={() => setMenuOpen(false)}>
-                업무 소개
+                입주ㆍ거주 청소
               </MenuName>
             </MenuBox>
             <MenuBox>
               <MenuName to="/completion" onClick={() => setMenuOpen(false)}>
                 준공 청소
+              </MenuName>
+            </MenuBox>
+            <MenuBox>
+              <MenuName to="/shop" onClick={() => setMenuOpen(false)}>
+                상가 청소
               </MenuName>
             </MenuBox>
             <MenuBox>

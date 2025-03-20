@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Ad1 from "../img/예시1.jpg";
-import Ad2 from "../img/예시3.jpg";
-import Intro1 from "../img/intro1.png";
-import Intro2 from "../img/intro2.png";
-import Intro3 from "../img/intro3.png";
-import Intro4 from "../img/intro4.png";
+import Ad1 from "../img/004.png";
+import Ad2 from "../img/005.png";
+import m1 from "../img/mobile/004.png";
+import m2 from "../img/mobile/005.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -17,42 +15,35 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+  margin-bottom: 100px;
   @media (max-width: 768px) {
-    height: 45vh;
-  }
-`;
-
-const ImageBox = styled.div`
-  width: 80%;
-  height: 75%;
-  background-image: ${({ imageurl }) => `url(${imageurl})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  @media (max-width: 768px) {
-    width: 90%;
-    height: 100%;
+    margin-bottom: 10px;
   }
 `;
 
 const StyledSwiper = styled(Swiper)`
-  width: 90%;
-  height: 80%;
+  width: 95%;
+  height: 90%;
   border-radius: 10px;
+  margin-top: 100px;
   .swiper-pagination {
     padding: 1px;
   }
   .swiper-pagination-bullet {
-    background: #8290ee; // 페이지네이션 점 색상 변경
-    width: 0.5vw;
-    height: 1vh;
+    background: #1e5acb; // 페이지네이션 점 색상 변경
+    width: 10px;
+    height: 10px;
     &:hover {
       opacity: 0.7;
+    }
+    @media (max-width: 768px) {
+      width: 10px;
+      height: 10px;
     }
   }
   .swiper-button-next,
   .swiper-button-prev {
-    color: #8290ee; // 네비게이션 버튼 색상 변경
+    color: #1e5acb; // 네비게이션 버튼 색상 변경
     &:hover {
       opacity: 0.6;
     }
@@ -61,6 +52,9 @@ const StyledSwiper = styled(Swiper)`
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 30px;
   }
 `;
 
@@ -72,7 +66,7 @@ const Slide = styled(SwiperSlide)`
   border-radius: 10px;
   /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   &::after {
@@ -88,20 +82,20 @@ const Slide = styled(SwiperSlide)`
   }
 `;
 const Introduce = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // 기본값 설정
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // 화면 크기 체크
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
-      <Container>
-        <ImageBox imageurl={Intro1} />
-      </Container>
-      <Container>
-        <ImageBox imageurl={Intro2} />
-      </Container>
-      <Container>
-        <ImageBox imageurl={Intro3} />
-      </Container>
-      <Container>
-        <ImageBox imageurl={Intro4} />
-      </Container>
       <Container>
         <StyledSwiper
           key="swiper"
@@ -112,8 +106,8 @@ const Introduce = () => {
           autoplay={{ delay: 5000 }}
           modules={[Navigation, Pagination, Autoplay]}
         >
-          <Slide imageurl={Ad1} />
-          <Slide imageurl={Ad2} />
+          <Slide imageurl={isMobile ? m1 : Ad1} />
+          <Slide imageurl={isMobile ? m2 : Ad2} />
         </StyledSwiper>
       </Container>
     </>

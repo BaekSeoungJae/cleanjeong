@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import MainImage from "../img/메인배경.jpg";
+import MainImage from "../img/메인배경.png";
+import MainImageM from "../img/메인배경M.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
-import SeoulHangangEB from "../fonts/SeoulHangangL.ttf"; // 폰트 파일 import
+// import THEmpgtM from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
+import THEmpgtB from "../fonts/THEmpgtM.otf"; // 폰트 파일 import
+import THEmpgtL from "../fonts/THEmpgtL.otf"; // 폰트 파일 import
+import SCDream3 from "../fonts/SCDream3.otf"; // 폰트 파일 import
+import SCDream6 from "../fonts/SCDream6.otf"; // 폰트 파일 import
 
 // 애니메이션 키프레임 정의
 const fadeIn = keyframes`
@@ -35,24 +40,22 @@ const MainBody = styled.div`
   justify-content: flex-start;
   position: relative;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.8),
-      rgba(255, 255, 255, 0.8)
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.6)
     ),
     url(${MainImage});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-`;
-
-const SameBody = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  background-color: whitesmoke;
+  @media (max-width: 768px) {
+    min-height: 600px;
+    justify-content: center;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.6)
+      ),
+      url(${MainImageM});
+  }
 `;
 
 const MainTextDiv = styled.div`
@@ -64,47 +67,84 @@ const MainTextDiv = styled.div`
   text-align: center;
   flex-direction: column;
   color: #393939;
-  margin-top: 130px;
+  margin-top: 400px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
 
   @media (max-width: 768px) {
-    display: none;
+    height: 60%;
+    margin-top: 0px;
+    justify-content: flex-end;
   }
 `;
 
 const Title1 = styled.h1`
   @font-face {
-    font-family: "SeoulHangangEB";
-    src: url(${SeoulHangangEB}) format("truetype");
+    font-family: "THEmpgtM";
+    src: url(${THEmpgtB}) format("opentype");
   }
-
-  font-family: "SeoulHangangEB";
+  font-family: "THEmpgtM";
   height: 35px;
-  font-size: 35px;
-  letter-spacing: 3px;
+  font-size: 48px;
+  letter-spacing: -7px;
+  transform: scaleY(0.9);
+  transform: scaleX(0.95);
+  font-weight: 500;
+  color: #585b5c;
+  /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 그림자 설정 */
 
   @media (max-width: 768px) {
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 25px;
+    letter-spacing: -3px;
   }
 `;
+
 const Title2 = styled.h1`
-  height: 35px;
-  font-size: 20px;
+  @font-face {
+    font-family: "THEmpgtL";
+    src: url(${THEmpgtL}) format("opentype");
+  }
+
+  font-family: "THEmpgtL";
+  height: 10px;
+  font-size: 23px;
   margin-top: 50px;
-  letter-spacing: 3px;
+  letter-spacing: -3px;
+  transform: scaleY(0.9);
+  font-weight: 300;
+  color: #2d2e2e;
 
   @media (max-width: 768px) {
+    width: 100%;
+    height: 15px;
     font-size: 15px;
   }
 `;
 const Title3 = styled.h1`
-  height: 35px;
-  font-size: 25px;
-  letter-spacing: 3px;
+  @font-face {
+    font-family: "THEmpgtL";
+    src: url(${THEmpgtL}) format("opentype");
+  }
+
+  font-family: "THEmpgtL";
+  height: 20px;
+  font-size: 29px;
+  letter-spacing: -3px;
+  transform: scaleY(0.9);
+  font-weight: 300;
+  color: #2d2e2e;
+  display: flex;
+  align-items: flex-start;
 
   @media (max-width: 768px) {
-    font-size: 15px;
+    width: 100%;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -113,13 +153,15 @@ const BtnDiv = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 390px;
+  margin-top: 150px;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
   @media (max-width: 768px) {
     align-items: center;
-    flex-direction: column;
-    margin-top: 130px;
+    flex-wrap: wrap;
+    height: 12%;
+    margin-top: 50px;
+    gap: 15px; /* ✅ 추가: 버튼 간 간격 조절 */
   }
 `;
 
@@ -189,43 +231,23 @@ const LinkBtn = styled(Link)`
     margin-right: 0;
   }
   @media (max-width: 768px) {
+    width: 65px;
+    min-width: 80px;
+    height: 30px;
+    font-size: 11px;
     margin-right: 0px;
-    margin-top: 30px;
-  }
-`;
-
-const CallButton = styled.a`
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #2c57e4;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 12px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  z-index: 999;
-
-  &:hover {
-    background-color: #1a3ca1;
-  }
-
-  @media (max-width: 768px) {
-    display: flex; /* 모바일 화면에서만 보이도록 설정 */
-    align-items: center;
-    justify-content: center;
+    border-radius: 10px;
+    padding: 5px 5px;
   }
 `;
 
 const TopDiv = styled.div`
   width: 80%;
   height: 88%;
+  display: flex;
   @media (max-width: 768px) {
-    height: 80%;
+    height: 100%;
+    flex-direction: column;
   }
 `;
 
@@ -238,13 +260,12 @@ const BottomDiv = styled.div`
   justify-content: center;
   background-color: rgb(110, 138, 165);
   @media (max-width: 768px) {
-    height: 20%;
-    flex-direction: column;
+    display: none;
   }
 `;
 
 const LefttSide = styled.div`
-  width: 25%;
+  width: 20%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -270,12 +291,18 @@ const LeftText = styled.div`
   }
 `;
 const LeftNum = styled.div`
+  @font-face {
+    font-family: "SCDream6";
+    src: url(${SCDream6}) format("opentype");
+  }
+
+  font-family: "SCDream6";
   width: 90%;
   height: 50%;
-  font-size: 27px;
+  font-size: 23px;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
   color: white;
   @media (max-width: 768px) {
     align-items: center;
@@ -283,18 +310,37 @@ const LeftNum = styled.div`
     font-size: 25px;
   }
 `;
+const MainNum = styled.div`
+  @font-face {
+    font-family: "SCDream6";
+    src: url(${SCDream6}) format("opentype");
+  }
 
+  font-family: "SCDream6";
+  width: 80%;
+  height: 50%;
+  font-size: 34px;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  @media (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+  }
+`;
 const MidLine = styled.div`
-  width: 5%;
+  width: 1%;
   height: 40%;
   border-right: 1px solid white;
   @media (max-width: 768px) {
     display: none;
   }
 `;
-
-const RightSide = styled.div`
-  width: 70%;
+const RightLeft = styled.div`
+  width: 35%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -306,15 +352,33 @@ const RightSide = styled.div`
   }
 `;
 
+const RightSide = styled.div`
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 const RightText = styled.div`
+  @font-face {
+    font-family: "SCDream3";
+    src: url(${SCDream3}) format("opentype");
+  }
+
+  font-family: "SCDream3";
   width: 90%;
   height: 17%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-direction: row;
   font-size: 11px;
-  color: #dbdbdb;
+  color: #ffffff;
   @media (max-width: 768px) {
     width: 90%;
     height: 33%;
@@ -349,6 +413,11 @@ const CleanJeong = () => {
     <Container>
       <MainBody>
         <TopDiv>
+          <MainTextDiv isVisible={isVisible}>
+            <Title1>'깨끗함'도 선택할 수 있다면?</Title1>
+            <Title2>먼지 하나 없는 맑은 공간, </Title2>
+            <Title3>그곳에 고요한 행복이 흐릅니다.</Title3>
+          </MainTextDiv>
           <BtnDiv isVisible={isVisible}>
             <LinkBtn to="/intro">회사소개</LinkBtn>
             <LinkBtn to="/houseclean">입주ㆍ거주 청소</LinkBtn>
@@ -356,37 +425,27 @@ const CleanJeong = () => {
             <LinkBtn to="/special">특수 청소</LinkBtn>
             <LinkBtn to="/shop">상가 청소</LinkBtn>
           </BtnDiv>
-          <MainTextDiv isVisible={isVisible}>
-            <Title1>깨끗함도 선택할 수 있다면?</Title1>
-            <Title2>먼지 하나 없는 맑은 공간, </Title2>
-            <Title3>그곳에 고요한 행복이 흐릅니다.</Title3>
-          </MainTextDiv>
         </TopDiv>
         <BottomDiv>
           <LefttSide>
-            <LeftText>연중무휴 지금 신청하기</LeftText>
-            <LeftNum>010-6754-6626</LeftNum>
+            <LeftText>24시간 연중무휴 상담가능</LeftText>
+            <LeftNum>당일 예약도 OK!</LeftNum>
           </LefttSide>
           <MidLine />
+          <RightLeft>
+            <MainNum>010-6754-6626</MainNum>
+          </RightLeft>
           <RightSide>
             <RightText>
-              신혼희망타운은 혼인신고 7년 이내의 부부로 입주 모집 공고일 기준
-              7년 이내면 가능합니다
+              주소 : 세종시 조치원읍 새내10길 95, 205호(세종파인시티)
             </RightText>
-            <RightText>
-              예비 신혼부부도 청약 시 접수하고 모집공고 가능하며, 1년이내에
-              가족관계증명서를 통한 증명이 필요합니다
-            </RightText>
-            <RightText>
-              소득기준은 도시근로자 월 평균소득 맞벌이 130% 혼벌이 120%로 17년도
-              3인 기준으로 650만원 미만인 경우 가능합니다
-            </RightText>
+            <RightText>전화번호 : 010-6754-6626</RightText>
+            <RightText>대표 : 양찬요</RightText>
+            <RightText>이메일 : cyy8300@naver.com</RightText>
+            <RightText>FAX : 0303-3440-2267</RightText>
           </RightSide>
         </BottomDiv>
       </MainBody>
-      <SameBody>1</SameBody>
-      <SameBody>2</SameBody>
-      <CallButton href="tel:010-6754-6626">📞 전화상담</CallButton>
     </Container>
   );
 };
