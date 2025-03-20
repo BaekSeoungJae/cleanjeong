@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Logo from "../img/클린정.png";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { AiOutlineUp } from "react-icons/ai";
 
 const Background = styled.div`
   min-height: 950px;
@@ -95,10 +96,41 @@ const CallButton = styled.a`
   }
 `;
 
+/* ✅ TOP 버튼 스타일 */
+const TopButton = styled.button`
+  width: 50px;
+  height: 50px;
+  display: ${({ show }) => (show ? "block" : "none")};
+  position: fixed;
+  bottom: 80px;
+  right: 50px;
+  background-color: #1e5acb;
+  color: white;
+  border: 1px solid white;
+  font-size: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+
+  &:hover {
+    background-color: #5e7ee0;
+    transform: scale(1.05); /* 살짝 커지는 효과 */
+  }
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    bottom: 30px;
+    right: 20px;
+    font-size: 11px;
+  }
+`;
+
 const CommonForm = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // 메뉴 영역을 감지하는 ref
   const location = useLocation(); // 🔹 현재 페이지의 경로 감지
+  const [showTopButton, setShowTopButton] = useState(false); // 🔹 TOP 버튼 상태 추가
 
   // 📌 페이지 이동 시 최상단으로 스크롤 이동
   useEffect(() => {
@@ -122,6 +154,27 @@ const CommonForm = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
+  // 📌 스크롤 이벤트 추가 → 일정 거리 이상 스크롤하면 TOP 버튼 표시
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowTopButton(true); // 스크롤 300px 이상 시 버튼 보이기
+      } else {
+        setShowTopButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // 📌 TOP 버튼 클릭 시 최상단 이동
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Background>
       <MenuBtnDiv>
@@ -138,6 +191,9 @@ const CommonForm = () => {
       <Outlet />
       <Footer />
       <CallButton href="tel:010-6754-6626">📞 전화상담</CallButton>
+      <TopButton show={showTopButton} onClick={scrollToTop}>
+        <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
+      </TopButton>
     </Background>
   );
 };
