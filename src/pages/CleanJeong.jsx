@@ -157,11 +157,10 @@ const BtnDiv = styled.div`
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   animation: ${({ isVisible }) => (isVisible ? fadeIn : "none")} 1s ease-out;
   @media (max-width: 768px) {
-    align-items: center;
     flex-wrap: wrap;
     height: 12%;
     margin-top: 50px;
-    gap: 15px; /* ✅ 추가: 버튼 간 간격 조절 */
+    gap: 13px; /* ✅ 추가: 버튼 간 간격 조절 */
   }
 `;
 
@@ -204,6 +203,9 @@ const LinkBtn = styled(Link)`
     height: 1px; /* 선의 두께 */
     background-color: #919191; /* 선의 색상 */
     border-radius: 2px; /* 선 끝부분 둥글게 */
+    @media (max-width: 768px) {
+      bottom: 8px; /* 선의 위치 */
+    }
   }
 
   &::before {
@@ -217,6 +219,10 @@ const LinkBtn = styled(Link)`
     transform: rotate(30deg); /* 오른쪽 아래에서 오른쪽 위 방향 */
     transform-origin: left center; /* 회전 중심을 왼쪽 끝으로 설정 */
     border-radius: 2px;
+    @media (max-width: 768px) {
+      bottom: 13.6px; /* 선의 위치 */
+      width: 11px; /* 대각선 길이 */
+    }
   }
   &:hover {
     background-color: rgba(180, 180, 180, 0.8);
@@ -231,13 +237,14 @@ const LinkBtn = styled(Link)`
     margin-right: 0;
   }
   @media (max-width: 768px) {
-    width: 65px;
-    min-width: 80px;
+    width: 90px;
+    min-width: 90px;
     height: 30px;
-    font-size: 11px;
+    font-size: 12px;
     margin-right: 0px;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 5px 5px;
+    color: #1b1b1b;
   }
 `;
 
@@ -247,6 +254,7 @@ const TopDiv = styled.div`
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
+    width: 90%;
     height: 100%;
     flex-direction: column;
   }
