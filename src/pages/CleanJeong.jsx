@@ -279,16 +279,21 @@ const LefttSide = styled.div`
 `;
 
 const LeftText = styled.div`
-  width: 90%;
+  width: 70%;
+  min-width: 186px;
   height: 40%;
   font-size: 16px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   color: white;
+  @media (max-width: 1200px) {
+    font-size: 14px;
+  }
   @media (max-width: 768px) {
     justify-content: center;
     font-size: 14px;
+    min-width: 186px;
   }
 `;
 const LeftNum = styled.div`
@@ -298,13 +303,17 @@ const LeftNum = styled.div`
   }
 
   font-family: "SCDream6";
-  width: 90%;
+  width: 70%;
+  min-width: 186px;
   height: 50%;
   font-size: 23px;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-end;
   color: white;
+  @media (max-width: 1200px) {
+    font-size: 20px;
+  }
   @media (max-width: 768px) {
     align-items: center;
     justify-content: center;
@@ -326,6 +335,9 @@ const MainNum = styled.div`
   align-items: center;
   justify-content: flex-start;
   color: white;
+  @media (max-width: 1200px) {
+    font-size: 30px;
+  }
   @media (max-width: 768px) {
     align-items: center;
     justify-content: center;
@@ -336,12 +348,16 @@ const MidLine = styled.div`
   width: 1%;
   height: 40%;
   border-right: 1px solid white;
+  @media (max-width: 1200px) {
+    width: 30px;
+  }
   @media (max-width: 768px) {
     display: none;
   }
 `;
 const RightLeft = styled.div`
   width: 35%;
+  min-width: 332px;
   height: 100%;
   display: flex;
   align-items: center;
