@@ -122,7 +122,7 @@ const Footer = () => {
             주소 : 세종특별시 새내10길 95, 205호 (세종파인시티)
           </LeftText>
           <LeftText>운영시간 : 연중무휴 24시간</LeftText>
-          <LeftText>Email : 99bsj@naver.com</LeftText>
+          <LeftText>Email : cyy8300@naver.com</LeftText>
           <LeftText2>Copyright 2025. 클린정 Co. All rights reserved</LeftText2>
         </LeftSide>
         <RightSide></RightSide>
