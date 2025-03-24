@@ -82,8 +82,8 @@ const ImageBoxGif = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   @media (max-width: 768px) {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
   }
 `;
 
@@ -96,8 +96,8 @@ const ImageBoxGif2 = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   @media (max-width: 768px) {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     margin-left: 0px;
     margin-top: 65px;
   }
