@@ -159,6 +159,11 @@ const Header = ({ isOpen, setMenuOpen }) => {
               </MenuName>
             </MenuBox>
             <MenuBox>
+              <MenuName to="/ex" onClick={() => setMenuOpen(false)}>
+                청소 사례
+              </MenuName>
+            </MenuBox>
+            <MenuBox>
               <MenuName to="/houseclean" onClick={() => setMenuOpen(false)}>
                 입주ㆍ거주 청소
               </MenuName>
@@ -178,11 +183,11 @@ const Header = ({ isOpen, setMenuOpen }) => {
                 특수 청소
               </MenuName>
             </MenuBox>
-            <MenuBox>
+            {/* <MenuBox>
               <MenuName to="/help" onClick={() => setMenuOpen(false)}>
                 문의 하기
               </MenuName>
-            </MenuBox>
+            </MenuBox> */}
           </HeaderMenu>
         </HeaderBox>
       </HeaderWrap>

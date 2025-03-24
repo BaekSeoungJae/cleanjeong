@@ -8,8 +8,10 @@ import { AiOutlineUp } from "react-icons/ai";
 
 const Background = styled.div`
   min-height: 950px;
+  min-width: 1340px;
   @media (max-width: 768px) {
     min-height: 600px;
+    min-width: 0px;
   }
 `;
 

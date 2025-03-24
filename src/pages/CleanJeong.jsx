@@ -445,6 +445,7 @@ const CleanJeong = () => {
           </MainTextDiv>
           <BtnDiv isVisible={isVisible}>
             <LinkBtn to="/intro">회사소개</LinkBtn>
+            <LinkBtn to="/ex">청소 사례</LinkBtn>
             <LinkBtn to="/houseclean">입주ㆍ거주 청소</LinkBtn>
             <LinkBtn to="/completion">준공 청소</LinkBtn>
             <LinkBtn to="/special">특수 청소</LinkBtn>
