@@ -90,7 +90,7 @@ const ImageBoxGif = styled.div`
 const ImageBoxGif2 = styled.div`
   width: 500px;
   height: 500px;
-  margin-left: 200px;
+  margin-left: 12%;
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: cover;
   background-repeat: no-repeat;
