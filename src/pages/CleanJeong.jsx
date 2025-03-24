@@ -458,13 +458,13 @@ const CleanJeong = () => {
           </LefttSide>
           <MidLine />
           <RightLeft>
-            <MainNum>010-6754-6626</MainNum>
+            <MainNum>010-7977-0204</MainNum>
           </RightLeft>
           <RightSide>
             <RightText>
               주소 : 세종시 조치원읍 새내10길 95, 205호(세종파인시티)
             </RightText>
-            <RightText>전화번호 : 010-6754-6626</RightText>
+            <RightText>전화번호 : 010-7977-0204</RightText>
             <RightText>대표 : 양찬요</RightText>
             <RightText>이메일 : cyy8300@naver.com</RightText>
             <RightText>FAX : 0303-3440-2267</RightText>
