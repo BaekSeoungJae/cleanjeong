@@ -12,6 +12,8 @@ import Ad12 from "../img/012.png";
 import Ad13 from "../img/013.png";
 import Ad14 from "../img/014.png";
 import Ad15 from "../img/015.png";
+import G1 from "../img/G1.gif";
+import G2 from "../img/G2.gif";
 import m4 from "../img/mobile/002.png";
 import m5 from "../img/mobile/003.png";
 import m1 from "../img/mobile/006.png";
@@ -44,6 +46,7 @@ const Container2 = styled.div`
     height: 78vh;
   }
 `;
+
 const ContainerM = styled.div`
   width: 100%;
   height: 100vh;
@@ -54,6 +57,49 @@ const ContainerM = styled.div`
   background-color: #ffffff;
   @media (max-width: 768px) {
     height: 37vh;
+  }
+`;
+
+const ContainerGif = styled.div`
+  width: 100%;
+  height: 80vh;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ImageBoxGif = styled.div`
+  width: 500px;
+  height: 500px;
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  @media (max-width: 768px) {
+    width: 350px;
+    height: 350px;
+  }
+`;
+
+const ImageBoxGif2 = styled.div`
+  width: 500px;
+  height: 500px;
+  margin-left: 200px;
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  @media (max-width: 768px) {
+    width: 350px;
+    height: 350px;
+    margin-left: 0px;
+    margin-top: 65px;
   }
 `;
 
@@ -225,6 +271,10 @@ const PageOne = () => {
       <Container2>
         <ImageBox imageurl={isMobile ? m3 : Ad3} />
       </Container2>
+      <ContainerGif>
+        <ImageBoxGif imageurl={isMobile ? G1 : G1} />
+        <ImageBoxGif2 imageurl={isMobile ? G2 : G2} />
+      </ContainerGif>
       <Container>
         <StyledSwiper
           key="swiper"
