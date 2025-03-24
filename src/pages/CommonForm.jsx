@@ -190,7 +190,7 @@ const CommonForm = () => {
       </div>
       <Outlet />
       <Footer />
-      <CallButton href="tel:010-6754-6626">📞 전화상담</CallButton>
+      <CallButton href="tel:010-7977-0204">📞 전화상담</CallButton>
       <TopButton show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>
