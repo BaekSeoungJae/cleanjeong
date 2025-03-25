@@ -9,8 +9,20 @@ import PageSpecial from "./pages/PageSpecial";
 import PageShop from "./pages/PageShop";
 // import PageHelp from "./pages/PageHelp";
 import PageEx from "./pages/PageEx";
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (window.gtag) {
+        console.log("✅ gtag 로딩 완료됨!");
+        clearInterval(interval);
+      } else {
+        console.log("❌ 아직 gtag 없음");
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
       <Router>
