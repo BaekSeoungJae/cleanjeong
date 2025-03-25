@@ -192,26 +192,8 @@ const CommonForm = () => {
       </div>
       <Outlet />
       <Footer />
-      <CallButton
-        href="tel:010-7977-0204"
-        onClick={(e) => {
-          e.preventDefault(); // 전화 바로 연결되는 거 잠시 멈춤
+      <CallButton href="tel:010-7977-0204">📞 전화상담</CallButton>
 
-          if (window.gtag) {
-            window.gtag("event", "tel_click", {
-              event_category: "contact",
-              event_label: "footer_call_mobile",
-            });
-          }
-
-          // 이벤트 전송 후 300ms 후에 전화 연결
-          setTimeout(() => {
-            window.location.href = "tel:010-7977-0204";
-          }, 300);
-        }}
-      >
-        📞 전화상담
-      </CallButton>
       <TopButton show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>
