@@ -192,7 +192,19 @@ const CommonForm = () => {
       </div>
       <Outlet />
       <Footer />
-      <CallButton href="tel:010-7977-0204">📞 전화상담</CallButton>
+      <CallButton
+        href="tel:010-7977-0204"
+        onClick={() => {
+          if (window.gtag) {
+            window.gtag("event", "tel_click", {
+              event_category: "contact",
+              event_label: "footer_call_mobile",
+            });
+          }
+        }}
+      >
+        📞 전화상담
+      </CallButton>
       <TopButton show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>
