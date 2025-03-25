@@ -195,11 +195,16 @@ const CommonForm = () => {
       <CallButton
         href="tel:010-7977-0204"
         onClick={() => {
+          console.log("📞 전화 버튼 클릭됨");
+
           if (window.gtag) {
+            console.log("✅ gtag 호출됨!");
             window.gtag("event", "tel_click", {
               event_category: "contact",
               event_label: "footer_call_mobile",
             });
+          } else {
+            console.warn("⚠️ gtag 없음!");
           }
         }}
       >
