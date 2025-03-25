@@ -194,18 +194,20 @@ const CommonForm = () => {
       <Footer />
       <CallButton
         href="tel:010-7977-0204"
-        onClick={() => {
-          console.log("📞 전화 버튼 클릭됨");
+        onClick={(e) => {
+          e.preventDefault(); // 전화 바로 연결되는 거 잠시 멈춤
 
           if (window.gtag) {
-            console.log("✅ gtag 호출됨!");
             window.gtag("event", "tel_click", {
               event_category: "contact",
               event_label: "footer_call_mobile",
             });
-          } else {
-            console.warn("⚠️ gtag 없음!");
           }
+
+          // 이벤트 전송 후 300ms 후에 전화 연결
+          setTimeout(() => {
+            window.location.href = "tel:010-7977-0204";
+          }, 300);
         }}
       >
         📞 전화상담
