@@ -11,8 +11,10 @@ const Container = styled.div`
   align-items: center;
   flex-direction: row;
   background-color: #1e5acb;
+  min-width: 1200px;
   @media (max-width: 768px) {
     flex-direction: column;
+    min-width: 0px;
   }
 `;
 

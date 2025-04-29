@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import CleanJeong from "./pages/CleanJeong";
+// import CleanJeong from "./pages/CleanJeong";
 import Introduce from "./pages/Introduce";
 import CommonForm from "./pages/CommonForm";
 import Pageone from "./pages/PageOne";
@@ -9,6 +9,7 @@ import PageSpecial from "./pages/PageSpecial";
 import PageShop from "./pages/PageShop";
 // import PageHelp from "./pages/PageHelp";
 import PageEx from "./pages/PageEx";
+import NewMainPage from "./pages/NewMainPage";
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route element={<CommonForm />}>
-            <Route path="/" element={<CleanJeong />} />
+            <Route path="/" element={<NewMainPage />} />
             <Route path="/intro" element={<Introduce />} />
             <Route path="/houseclean" element={<Pageone />} />
             <Route path="/completion" element={<PageCompletion />} />

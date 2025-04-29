@@ -8,7 +8,7 @@ import { AiOutlineUp } from "react-icons/ai";
 
 const Background = styled.div`
   min-height: 950px;
-  min-width: 1340px;
+  width: 100%;
   @media (max-width: 768px) {
     min-height: 600px;
     min-width: 0px;
@@ -193,7 +193,6 @@ const CommonForm = () => {
       <Outlet />
       <Footer />
       <CallButton href="tel:010-7977-0204">📞 전화상담</CallButton>
-
       <TopButton show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>

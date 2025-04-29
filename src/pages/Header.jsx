@@ -31,6 +31,9 @@ const HeaderWrap = styled.div`
   display: flex;
   justify-content: center;
 
+  @media (max-width: 1200px) {
+    width: 800px;
+  }
   @media (max-width: 768px) {
     width: 100%;
     height: 100%;
@@ -115,6 +118,9 @@ const MenuName = styled(Link)`
     color: #2c57e4;
   }
 
+  @media (max-width: 1200px) {
+    font-size: 15px;
+  }
   @media (max-width: 768px) {
     font-size: 18px;
   }

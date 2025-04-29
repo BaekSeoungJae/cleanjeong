@@ -6,6 +6,9 @@ import m1 from "../img/mobile/004.png";
 import m2 from "../img/mobile/005.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Container = styled.div`
   width: 100%;
@@ -18,11 +21,12 @@ const Container = styled.div`
   margin-bottom: 100px;
   @media (max-width: 768px) {
     margin-bottom: 10px;
+    min-width: 0px;
   }
 `;
 
 const StyledSwiper = styled(Swiper)`
-  width: 95%;
+  width: 85%;
   height: 90%;
   border-radius: 10px;
   margin-top: 100px;
