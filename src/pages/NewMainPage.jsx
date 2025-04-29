@@ -35,7 +35,7 @@ const MainHeader = styled.div`
   @media (max-width: 768px) {
     width: 400px;
     height: 743px;
-    margin-top: 0px;
+    margin-top: 30px;
   }
 `;
 
