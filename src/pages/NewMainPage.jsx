@@ -22,6 +22,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-width: 1200px;
+  @media (max-width: 768px) {
+    min-width: 0px;
+  }
 `;
 
 const MainHeader = styled.div`
