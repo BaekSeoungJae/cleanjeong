@@ -37,6 +37,11 @@ const MainHeader = styled.div`
     height: 743px;
     margin-top: 30px;
   }
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 743; /* ✅ 비율 유지 */
+  }
 `;
 
 const MenuBtnDiv = styled.div`
@@ -46,11 +51,17 @@ const MenuBtnDiv = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 768px) {
-    width: 500px;
+    width: 400px;
     height: 150px;
     flex-direction: column;
   }
+  @media (max-width: 400px) {
+    width: 95%;
+    height: auto;
+    aspect-ratio: 400 / 150;
+  }
 `;
+
 const MenuBtnL = styled.div`
   width: 540px;
   height: 100px;
@@ -58,11 +69,17 @@ const MenuBtnL = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 768px) {
-    width: 500px;
+    width: 400px;
     height: 75px;
     align-items: flex-end;
   }
+  @media (max-width: 400px) {
+    width: 95%;
+    height: auto;
+    aspect-ratio: 400 / 75;
+  }
 `;
+
 const MenuBtnR = styled.div`
   width: 540px;
   height: 100px;
@@ -70,10 +87,16 @@ const MenuBtnR = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 768px) {
-    width: 500px;
+    width: 400px;
     height: 75px;
   }
+  @media (max-width: 400px) {
+    width: 95%;
+    height: auto;
+    aspect-ratio: 400 / 75;
+  }
 `;
+
 const LinkBtn = styled(Link)`
   width: 150px;
   height: 55px;
@@ -150,11 +173,14 @@ const LinkBtn = styled(Link)`
     margin-right: 20px;
     padding: 5px 5px;
   }
+  @media (max-width: 400px) {
+    font-size: 10px;
+  }
 `;
 
 const Body1 = styled.div`
   width: 1200px;
-  height: 2419px;
+  aspect-ratio: 400 / 2419;
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
@@ -163,7 +189,13 @@ const Body1 = styled.div`
     width: 400px;
     height: 722px;
   }
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 722;
+  }
 `;
+
 const Body2 = styled.div`
   width: 1200px;
   height: 2137px;
@@ -175,7 +207,13 @@ const Body2 = styled.div`
     width: 400px;
     height: 794px;
   }
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 794;
+  }
 `;
+
 const Body3 = styled.div`
   width: 1200px;
   height: 3753px;
@@ -187,7 +225,13 @@ const Body3 = styled.div`
     width: 400px;
     height: 1128px;
   }
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 1128;
+  }
 `;
+
 const Body4 = styled.div`
   width: 1200px;
   height: 1013px;
@@ -199,7 +243,13 @@ const Body4 = styled.div`
     width: 400px;
     height: 1479px;
   }
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 1479;
+  }
 `;
+
 const Body5 = styled.div`
   width: 1200px;
   height: 2861px;
@@ -211,7 +261,13 @@ const Body5 = styled.div`
     width: 400px;
     height: 2613px;
   }
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 2613;
+  }
 `;
+
 const Body6 = styled.div`
   width: 1200px;
   height: 1997px;
@@ -222,6 +278,11 @@ const Body6 = styled.div`
   @media (max-width: 768px) {
     width: 400px;
     height: 3193px;
+  }
+  @media (max-width: 400px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 400 / 3193;
   }
 `;
 
