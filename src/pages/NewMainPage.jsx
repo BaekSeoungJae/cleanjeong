@@ -180,7 +180,7 @@ const LinkBtn = styled(Link)`
 
 const Body1 = styled.div`
   width: 1200px;
-  aspect-ratio: 400 / 2419;
+  height: 2491px;
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
