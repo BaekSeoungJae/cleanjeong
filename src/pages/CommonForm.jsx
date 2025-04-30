@@ -7,8 +7,9 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import { AiOutlineUp } from "react-icons/ai";
 
 const Background = styled.div`
-  min-height: 950px;
   width: 100%;
+  min-height: 950px;
+  overflow-x: hidden;
   @media (max-width: 768px) {
     min-height: 600px;
     z-index: 9;

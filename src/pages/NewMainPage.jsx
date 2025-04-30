@@ -22,10 +22,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-width: 1200px;
+  /* min-width: 1200px;
   @media (max-width: 768px) {
     min-width: 0px;
-  }
+  } */
 `;
 
 const MainHeader = styled.div`
@@ -36,25 +36,52 @@ const MainHeader = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 550; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
-    height: 743px;
-    margin-top: 30px;
+    height: 503px;
+    margin-top: 60px;
   }
   @media (max-width: 400px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 400 / 743; /* ✅ 비율 유지 */
+    aspect-ratio: 400 / 503; /* ✅ 비율 유지 */
+  }
+`;
+
+const MenuBtnDivPC = styled.div`
+  width: 1200px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 100; /* ✅ 비율 유지 */
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
 const MenuBtnDiv = styled.div`
   width: 1200px;
   height: 100px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 100; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
+    display: flex;
     width: 400px;
     height: 150px;
     flex-direction: column;
@@ -72,6 +99,11 @@ const MenuBtnL = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 100; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
     height: 75px;
@@ -170,6 +202,12 @@ const LinkBtn = styled(Link)`
   &:last-child {
     margin-right: 0;
   }
+  @media (max-width: 1200px) {
+    width: 120px;
+    height: 45px;
+    margin-right: 20px;
+    font-size: 14px;
+  }
   @media (max-width: 768px) {
     width: 100px;
     height: 30px;
@@ -178,7 +216,7 @@ const LinkBtn = styled(Link)`
     padding: 5px 5px;
   }
   @media (max-width: 400px) {
-    font-size: 10px;
+    font-size: 11px;
   }
 `;
 
@@ -189,6 +227,11 @@ const Body1 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 2491; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
     height: 722px;
@@ -207,6 +250,11 @@ const Body2 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 2137; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
     height: 794px;
@@ -225,6 +273,11 @@ const Body3 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 3753; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
     height: 1128px;
@@ -243,6 +296,11 @@ const Body4 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 1013; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
     height: 1479px;
@@ -261,6 +319,11 @@ const Body5 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 2861; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
     height: 2613px;
@@ -279,6 +342,11 @@ const Body6 = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 1997; /* ✅ 비율 유지 */
+  }
   @media (max-width: 768px) {
     width: 400px;
     height: 3193px;
@@ -306,6 +374,14 @@ const NewMainPage = () => {
   return (
     <Container>
       <MainHeader imageurl={isMobile ? mHeader : headerImg}></MainHeader>
+      <MenuBtnDivPC>
+        <LinkBtn to="/intro">회사 소개</LinkBtn>
+        <LinkBtn to="/ex">청소 사례</LinkBtn>
+        <LinkBtn to="/houseclean">입주ㆍ거주 청소</LinkBtn>
+        <LinkBtn to="/completion">준공 청소</LinkBtn>
+        <LinkBtn to="/special">특수 청소</LinkBtn>
+        <LinkBtn to="/shop">상가 청소</LinkBtn>
+      </MenuBtnDivPC>
       <MenuBtnDiv>
         <MenuBtnL>
           <LinkBtn to="/intro">회사 소개</LinkBtn>
