@@ -36,28 +36,20 @@ const Container = styled.div`
 
 const Container2 = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  @media (max-width: 768px) {
-    height: 78vh;
-  }
 `;
 
 const ContainerM = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  @media (max-width: 768px) {
-    height: 37vh;
-  }
 `;
 
 const ContainerGif = styled.div`
@@ -103,16 +95,41 @@ const ImageBoxGif2 = styled.div`
   }
 `;
 
-const ImageBox = styled.div`
-  width: 85%;
-  height: 95%;
+const ImageBoxM = styled.div`
+  width: 1200px;
+  height: 675px;
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 675; /* ✅ 비율 유지 */
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 768 / 644; /* ✅ 비율 유지 */
+  }
+`;
+
+const ImageBox = styled.div`
+  width: 1200px;
+  height: 675px;
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 675; /* ✅ 비율 유지 */
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 540 / 940; /* ✅ 비율 유지 */
   }
 `;
 
@@ -263,7 +280,7 @@ const PageOne = () => {
         </StyledSwiper>
       </Container>
       <ContainerM>
-        <ImageBox imageurl={isMobile ? m1 : Ad1} />
+        <ImageBoxM imageurl={isMobile ? m1 : Ad1} />
       </ContainerM>
       <Container2>
         <ImageBox imageurl={isMobile ? m2 : Ad2} />
