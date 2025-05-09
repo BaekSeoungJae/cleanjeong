@@ -5,6 +5,10 @@ import Footer from "./Footer";
 import Logo from "../img/클린정.png";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AiOutlineUp } from "react-icons/ai";
+import BIcon from "../img/nblogimg.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FaCheckCircle } from "react-icons/fa";
 
 const Background = styled.div`
   width: 100%;
@@ -71,6 +75,96 @@ const MenuButton = styled.button`
   }
 `;
 
+const BlogButtonM = styled.a`
+  display: none;
+  position: fixed;
+  width: 49px;
+  height: 49px;
+  align-items: center;
+  justify-content: center;
+  bottom: 25px;
+  left: 25px;
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color, width 0.3s ease;
+  z-index: 9;
+
+  &:hover {
+    background-color: #02883e;
+  }
+
+  @media (max-width: 768px) {
+    display: flex; /* 모바일 화면에서만 보이도록 설정 */
+  }
+`;
+
+const BlogButton = styled.a`
+  display: flex;
+  position: fixed;
+  width: 150px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  bottom: 35%;
+  right: 1%;
+  background-color: #03c75a;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color, width 0.3s ease;
+  z-index: 9;
+
+  &:hover {
+    background-color: #02883e;
+    width: 200px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const CallButtonPC = styled.a`
+  display: flex;
+  position: fixed;
+  width: 150px;
+  height: 55px;
+  align-items: center;
+  justify-content: center;
+  bottom: 42%;
+  right: 1%;
+  background-color: #2c57e4;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color, width 0.3s ease;
+  cursor: pointer;
+  z-index: 9;
+
+  &:hover {
+    background-color: #1a3ca1;
+    width: 200px;
+  }
+
+  @media (max-width: 768px) {
+    display: none; /* 모바일 화면에서만 보이도록 설정 */
+  }
+`;
+
 const CallButton = styled.a`
   display: none;
   position: fixed;
@@ -134,6 +228,8 @@ const CommonForm = () => {
   const menuRef = useRef(null); // 메뉴 영역을 감지하는 ref
   const location = useLocation(); // 🔹 현재 페이지의 경로 감지
   const [showTopButton, setShowTopButton] = useState(false); // 🔹 TOP 버튼 상태 추가
+  const [hovered, setHovered] = useState(false); //전화버튼 호버 상태
+  const [bHovered, setBhovered] = useState(false); //블로그버튼 호버 상태
 
   // 📌 페이지 이동 시 최상단으로 스크롤 이동
   useEffect(() => {
@@ -178,6 +274,17 @@ const CommonForm = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText("010-7977-0204").then(() => {
+      toast.success("전화번호가 복사되었습니다.", {
+        position: "bottom-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        icon: <FaCheckCircle color="#2c57e4" />,
+      });
+    });
+  };
+
   return (
     <Background>
       <MenuBtnDiv>
@@ -193,10 +300,34 @@ const CommonForm = () => {
       </div>
       <Outlet />
       <Footer />
+      <BlogButton
+        onMouseEnter={() => setBhovered(true)}
+        onMouseLeave={() => setBhovered(false)}
+        href="https://blog.naver.com/cleanjeong-official"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="클린정 블로그 이동"
+      >
+        {bHovered ? "블로그 이동 클릭" : "N 블로그"}
+      </BlogButton>
+      <BlogButtonM
+        href="https://blog.naver.com/cleanjeong-official"
+        target="_blank"
+        rel="noopener noreferrer"
+        imageurl={BIcon}
+      />
+      <CallButtonPC
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={handleCopy}
+      >
+        {hovered ? "010-7977-0204" : "📞 전화상담"}
+      </CallButtonPC>
       <CallButton href="tel:010-7977-0204">📞 전화상담</CallButton>
       <TopButton show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>
+      <ToastContainer limit={3} />
     </Background>
   );
 };
