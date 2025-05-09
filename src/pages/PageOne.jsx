@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Ad1 from "../img/006.png";
 import Ad2 from "../img/007.png";
 import Ad3 from "../img/008.png";
-import Ad4 from "../img/002.png";
-import Ad5 from "../img/003.png";
+import Ad4 from "../img/002.jpg";
+import Ad5 from "../img/003.jpg";
 import Ad9 from "../img/009.png";
 import Ad10 from "../img/010.png";
 import Ad11 from "../img/011.png";
@@ -14,8 +14,8 @@ import Ad14 from "../img/014.png";
 import Ad15 from "../img/015.png";
 import G1 from "../img/G1.gif";
 import G2 from "../img/G2.gif";
-import m4 from "../img/mobile/002.png";
-import m5 from "../img/mobile/003.png";
+import m4 from "../img/mobile/002.jpg";
+import m5 from "../img/mobile/003.jpg";
 import m1 from "../img/mobile/006.png";
 import m2 from "../img/mobile/007.png";
 import m3 from "../img/mobile/008.png";
@@ -23,6 +23,21 @@ import m6 from "../img/mobile/009.png";
 import m7 from "../img/mobile/010.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+const ContainerTop = styled.div`
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1920 / 346;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    aspect-ratio: 768 / 853;
+  }
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -134,9 +149,8 @@ const ImageBox = styled.div`
 `;
 
 const StyledSwiper = styled(Swiper)`
-  width: 95%;
-  height: 90%;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
   margin-top: 100px;
   .swiper-pagination {
     padding: 1px;
@@ -177,7 +191,6 @@ const SlideM = styled(SwiperSlide)`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  border-radius: 10px;
   /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
@@ -201,7 +214,6 @@ const Slide = styled(SwiperSlide)`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  border-radius: 10px;
   /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
@@ -222,12 +234,12 @@ const Slide = styled(SwiperSlide)`
     display: none;
   }
 `;
+
 const Slide2 = styled(SwiperSlide)`
   display: none;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  border-radius: 10px;
   /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
@@ -265,7 +277,7 @@ const PageOne = () => {
 
   return (
     <>
-      <Container>
+      <ContainerTop>
         <StyledSwiper
           key="swiper"
           spaceBetween={10}
@@ -278,7 +290,7 @@ const PageOne = () => {
           <SlideM imageurl={isMobile ? m4 : Ad4} />
           <SlideM imageurl={isMobile ? m5 : Ad5} />
         </StyledSwiper>
-      </Container>
+      </ContainerTop>
       <ContainerM>
         <ImageBoxM imageurl={isMobile ? m1 : Ad1} />
       </ContainerM>
