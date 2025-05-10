@@ -10,6 +10,7 @@ import PageShop from "./pages/PageShop";
 // import PageHelp from "./pages/PageHelp";
 import PageEx from "./pages/PageEx";
 import NewMainPage from "./pages/NewMainPage";
+import PopupAd from "./pages/PopupAd";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             {/* <Route path="/help" element={<PageHelp />} /> */}
             <Route path="/ex" element={<PageEx />} />
           </Route>
+          <Route path="/popup" element={<PopupAd />} />
         </Routes>
       </Router>
     </>

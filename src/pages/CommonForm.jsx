@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import styled from "styled-components";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -9,6 +9,8 @@ import BIcon from "../img/nblogimg.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaCheckCircle } from "react-icons/fa";
+import adImg1 from "../img/mobile/002.jpg";
+import adImg2 from "../img/mobile/003.jpg";
 
 const Background = styled.div`
   width: 100%;
@@ -230,6 +232,7 @@ const CommonForm = () => {
   const [showTopButton, setShowTopButton] = useState(false); // 🔹 TOP 버튼 상태 추가
   const [hovered, setHovered] = useState(false); //전화버튼 호버 상태
   const [bHovered, setBhovered] = useState(false); //블로그버튼 호버 상태
+  const adImages = useMemo(() => [adImg1, adImg2], []);
 
   // 📌 페이지 이동 시 최상단으로 스크롤 이동
   useEffect(() => {
@@ -284,6 +287,28 @@ const CommonForm = () => {
       });
     });
   };
+
+  //팝업 광고 이미지
+  useEffect(() => {
+    const isDesktop = window.innerWidth > 768; // 또는 1024로 조정 가능
+
+    if (location.pathname === "/" && isDesktop) {
+      adImages.forEach((img, idx) => {
+        const key = `hidePopupUntil-${img}`;
+        const hideUntil = localStorage.getItem(key);
+        const now = Date.now();
+
+        if (!hideUntil || now > Number(hideUntil)) {
+          const params = new URLSearchParams({ image: img });
+          window.open(
+            `/popup?${params.toString()}`,
+            `popupAd-${idx}`,
+            `width=400,height=500,top=${100 + idx},left=${100 + idx * 410}`
+          );
+        }
+      });
+    }
+  }, [location.pathname, adImages]);
 
   return (
     <Background>
