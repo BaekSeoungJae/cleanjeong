@@ -65,8 +65,8 @@ const PopupAd = () => {
   const [visibleAds, setVisibleAds] = useState([]);
 
   useEffect(() => {
-    const isDesktop = window.innerWidth > 768;
-    if (!isDesktop) return;
+    // const isDesktop = window.innerWidth > 768;
+    // if (!isDesktop) return;
 
     const now = Date.now();
     const visible = adImages.filter((img) => {
@@ -94,7 +94,7 @@ const PopupAd = () => {
           image={img}
           onClose={handleClose}
           index={index}
-          top={130 + index}
+          top={130}
           left={100 + index * 410}
         />
       ))}
