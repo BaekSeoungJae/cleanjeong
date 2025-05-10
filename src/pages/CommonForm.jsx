@@ -83,8 +83,8 @@ const BlogButtonM = styled.a`
   height: 49px;
   align-items: center;
   justify-content: center;
-  bottom: 25px;
-  left: 25px;
+  bottom: 75px;
+  right: 25px;
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
@@ -169,14 +169,14 @@ const CallButtonPC = styled.a`
 const CallButton = styled.a`
   display: none;
   position: fixed;
-  bottom: 25px;
-  left: 50%; /* 가운데 정렬 */
-  transform: translateX(-50%); /* 정확한 중앙 정렬 */
+  width: 49px;
+  height: 49px;
+  bottom: 130px;
+  right: 25px;
   background-color: #2c57e4;
   color: white;
   font-size: 18px;
   font-weight: bold;
-  padding: 12px 18px;
   border-radius: 50px;
   text-decoration: none;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -324,7 +324,7 @@ const CommonForm = () => {
       >
         {hovered ? "010-7977-0204" : "📞 전화상담"}
       </CallButtonPC>
-      <CallButton href="tel:010-7977-0204">📞 전화상담</CallButton>
+      <CallButton href="tel:010-7977-0204">📞</CallButton>
       <TopButton show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>

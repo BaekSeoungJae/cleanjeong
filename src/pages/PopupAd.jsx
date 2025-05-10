@@ -11,7 +11,6 @@ const Overlay = styled.div`
   left: ${({ left }) => left}px;
   width: 400px;
   height: 500px;
-  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +18,11 @@ const Overlay = styled.div`
   @media (max-width: 1024px) {
     left: 50%;
     transform: translateX(-50%);
+  }
+  @media (max-width: 400px) {
+    width: 95%;
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
   @media (max-height: 600px) {
     display: none;
