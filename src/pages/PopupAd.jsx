@@ -1,85 +1,130 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useSearchParams } from "react-router-dom";
+import adImg1 from "../img/mobile/002.jpg";
+import adImg2 from "../img/mobile/003.jpg";
 
-const PopupWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
+const adImages = [adImg1, adImg2];
+
+const Overlay = styled.div`
+  position: fixed;
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
+  width: 400px;
+  height: 500px;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  background: white;
+  z-index: 9999;
+  @media (max-width: 1024px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @media (max-height: 600px) {
+    display: none;
+  }
 `;
 
-const PopupContent = styled.div`
+const ModalContainer = styled.div`
+  background: white;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
   width: 100%;
-  height: 10%;
+  height: 100%;
   text-align: center;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 `;
 
 const BannerImage = styled.img`
   width: 100%;
   height: auto;
-  aspect-ratio: 768 / 853;
   border-radius: 8px;
-  background-image: ${({ imageurl }) => `url(${imageurl})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  margin-bottom: 12px;
 `;
 
 const CheckboxRow = styled.div`
   font-size: 14px;
-  margin-right: 12px;
+  margin: 10px 0;
+  text-align: left;
 `;
 
 const CloseButton = styled.button`
-  margin-right: 12px;
-  padding: 5px 16px;
+  margin-top: 8px;
+  padding: 8px 16px;
   background-color: #2c57e4;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-
   &:hover {
     background-color: #1a3ca1;
   }
 `;
 
 const PopupAd = () => {
-  const [searchParams] = useSearchParams();
-  const imageurl = searchParams.get("image");
-  const [hideToday, setHideToday] = useState(false);
+  const [visibleAds, setVisibleAds] = useState([]);
 
-  const handleClose = () => {
+  useEffect(() => {
+    const isDesktop = window.innerWidth > 768;
+    if (!isDesktop) return;
+
+    const now = Date.now();
+    const visible = adImages.filter((img) => {
+      const key = `hidePopupUntil-${img}`;
+      const hideUntil = localStorage.getItem(key);
+      return !hideUntil || now > Number(hideUntil);
+    });
+    setVisibleAds(visible);
+  }, []);
+
+  const handleClose = (img, hideToday) => {
     if (hideToday) {
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
-      localStorage.setItem(`hidePopupUntil-${imageurl}`, tomorrow.getTime());
+      localStorage.setItem(`hidePopupUntil-${img}`, tomorrow.getTime());
     }
-    window.close();
+    setVisibleAds((prev) => prev.filter((ad) => ad !== img));
   };
 
   return (
-    <PopupWrapper>
-      <BannerImage src={imageurl} />
-      <PopupContent>
+    <>
+      {visibleAds.map((img, index) => (
+        <PopupModal
+          key={img}
+          image={img}
+          onClose={handleClose}
+          index={index}
+          top={130 + index}
+          left={100 + index * 410}
+        />
+      ))}
+    </>
+  );
+};
+
+const PopupModal = ({ image, onClose, index, top, left }) => {
+  const [hideToday, setHideToday] = useState(false);
+
+  return (
+    <Overlay top={top} left={left}>
+      <ModalContainer>
+        <BannerImage src={image} alt="광고 배너" />
         <CheckboxRow>
           <input
             type="checkbox"
-            id="dontShow"
+            id={`dontShow-${index}`}
             onChange={(e) => setHideToday(e.target.checked)}
           />
-          <label htmlFor="dontShow"> 오늘 하루 보지 않기</label>
+          <label htmlFor={`dontShow-${index}`}>
+            {" "}
+            오늘 하루 이 창 보지 않기
+          </label>
         </CheckboxRow>
-        <CloseButton onClick={handleClose}>닫기</CloseButton>
-      </PopupContent>
-    </PopupWrapper>
+        <CloseButton onClick={() => onClose(image, hideToday)}>
+          닫기
+        </CloseButton>
+      </ModalContainer>
+    </Overlay>
   );
 };
 
