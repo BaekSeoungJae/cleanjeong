@@ -26,7 +26,7 @@ const ImageBox = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 1999; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 1999;
   }
   @media (max-width: 768px) {
     width: 400px;
@@ -36,7 +36,7 @@ const ImageBox = styled.div`
   @media (max-width: 400px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 400 / 666; /* ✅ 비율 유지 */
+    aspect-ratio: 400 / 666;
   }
 `;
 

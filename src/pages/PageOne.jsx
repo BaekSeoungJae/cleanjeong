@@ -120,12 +120,12 @@ const ImageBoxM = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 675; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 675;
   }
   @media (max-width: 768px) {
     width: 90%;
     height: auto;
-    aspect-ratio: 768 / 644; /* ✅ 비율 유지 */
+    aspect-ratio: 768 / 644;
   }
 `;
 
@@ -139,12 +139,12 @@ const ImageBox = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 675; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 675;
   }
   @media (max-width: 768px) {
     width: 90%;
     height: auto;
-    aspect-ratio: 540 / 940; /* ✅ 비율 유지 */
+    aspect-ratio: 540 / 940;
   }
 `;
 
@@ -191,7 +191,6 @@ const SlideM = styled(SwiperSlide)`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
@@ -214,7 +213,6 @@ const Slide = styled(SwiperSlide)`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
@@ -226,7 +224,7 @@ const Slide = styled(SwiperSlide)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${({ theme }) => theme.overlay}; /* 다크 모드의 오버레이 색상 */
+    background: ${({ theme }) => theme.overlay};
     transition: background-color 0.5s ease;
     pointer-events: none;
   }
@@ -240,7 +238,6 @@ const Slide2 = styled(SwiperSlide)`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  /* transition: background-color 0.5s ease; */
   background-image: ${({ imageurl }) => `url(${imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
@@ -252,7 +249,7 @@ const Slide2 = styled(SwiperSlide)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${({ theme }) => theme.overlay}; /* 다크 모드의 오버레이 색상 */
+    background: ${({ theme }) => theme.overlay};
     transition: background-color 0.5s ease;
     pointer-events: none;
   }

@@ -22,10 +22,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* min-width: 1200px;
-  @media (max-width: 768px) {
-    min-width: 0px;
-  } */
 `;
 
 const MainHeader = styled.div`
@@ -39,7 +35,7 @@ const MainHeader = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 550; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 550;
   }
   @media (max-width: 768px) {
     width: 400px;
@@ -49,7 +45,7 @@ const MainHeader = styled.div`
   @media (max-width: 400px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 400 / 503; /* ✅ 비율 유지 */
+    aspect-ratio: 400 / 503;
   }
 `;
 
@@ -62,7 +58,7 @@ const MenuBtnDivPC = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 100; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 100;
   }
   @media (max-width: 768px) {
     display: none;
@@ -78,7 +74,7 @@ const MenuBtnDiv = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 100; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 100;
   }
   @media (max-width: 768px) {
     display: flex;
@@ -102,7 +98,7 @@ const MenuBtnL = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 100; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 100;
   }
   @media (max-width: 768px) {
     width: 400px;
@@ -276,7 +272,7 @@ const Body3 = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 3753; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 3753;
   }
   @media (max-width: 768px) {
     width: 400px;
@@ -299,7 +295,7 @@ const Body4 = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 1013; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 1013;
   }
   @media (max-width: 768px) {
     width: 400px;
@@ -322,7 +318,7 @@ const Body5 = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 2861; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 2861;
   }
   @media (max-width: 768px) {
     width: 400px;
@@ -345,7 +341,7 @@ const Body6 = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: auto;
-    aspect-ratio: 1200 / 1997; /* ✅ 비율 유지 */
+    aspect-ratio: 1200 / 1997;
   }
   @media (max-width: 768px) {
     width: 400px;

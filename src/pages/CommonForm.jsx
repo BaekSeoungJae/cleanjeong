@@ -30,7 +30,7 @@ const HeaderLogo = styled(Link)`
   @media (max-width: 768px) {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* 정중앙 정렬 */
+    transform: translateX(-50%);
   }
 `;
 
@@ -51,7 +51,7 @@ const MenuBtnDiv = styled.div`
     height: 60px;
     display: ${({ isOpen }) => (isOpen ? "none" : "flex")};
     align-items: center;
-    justify-content: space-between; /* 왼쪽과 중앙 정렬을 위해 변경 */
+    justify-content: space-between;
     position: fixed;
 
     background-color: white;
@@ -72,7 +72,7 @@ const MenuButton = styled.button`
     width: 60px;
     height: 60px;
     display: block;
-    align-self: flex-start; /* 왼쪽 정렬 */
+    align-self: flex-start;
   }
 `;
 
@@ -103,7 +103,7 @@ const BlogButtonM = styled.a`
   }
 
   @media (max-width: 768px) {
-    display: flex; /* 모바일 화면에서만 보이도록 설정 */
+    display: flex;
   }
 `;
 
@@ -162,7 +162,7 @@ const CallButtonPC = styled.a`
   }
 
   @media (max-width: 768px) {
-    display: none; /* 모바일 화면에서만 보이도록 설정 */
+    display: none;
   }
 `;
 
@@ -188,13 +188,13 @@ const CallButton = styled.a`
   }
 
   @media (max-width: 768px) {
-    display: flex; /* 모바일 화면에서만 보이도록 설정 */
+    display: flex;
     align-items: center;
     justify-content: center;
   }
 `;
 
-/* ✅ TOP 버튼 스타일 */
+/*  TOP 버튼 스타일 */
 const TopButton = styled.button`
   width: 50px;
   height: 50px;
@@ -213,7 +213,7 @@ const TopButton = styled.button`
 
   &:hover {
     background-color: #5e7ee0;
-    transform: scale(1.05); /* 살짝 커지는 효과 */
+    transform: scale(1.05);
   }
   @media (max-width: 768px) {
     width: 40px;
@@ -232,7 +232,7 @@ const CommonForm = () => {
   const [hovered, setHovered] = useState(false); //전화버튼 호버 상태
   const [bHovered, setBhovered] = useState(false); //블로그버튼 호버 상태
 
-  // 📌 페이지 이동 시 최상단으로 스크롤 이동
+  // 페이지 이동 시 최상단으로 스크롤 이동
   useEffect(() => {
     window.scrollTo(0, 0); // 페이지 최상단으로 이동
   }, [location.pathname]); // 🔹 경로가 변경될 때마다 실행
@@ -254,7 +254,7 @@ const CommonForm = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
-  // 📌 스크롤 이벤트 추가 → 일정 거리 이상 스크롤하면 TOP 버튼 표시
+  // 스크롤 이벤트 추가 → 일정 거리 이상 스크롤하면 TOP 버튼 표시
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
@@ -270,7 +270,7 @@ const CommonForm = () => {
     };
   }, []);
 
-  // 📌 TOP 버튼 클릭 시 최상단 이동
+  // TOP 버튼 클릭 시 최상단 이동
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
