@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaCheckCircle } from "react-icons/fa";
 import PopupAd from "./PopupAd";
+import FirebaseForm from "../components/FirebaseForm";
 
 const Background = styled.div`
   width: 100%;
@@ -288,6 +289,7 @@ const CommonForm = () => {
 
   return (
     <Background>
+      <FirebaseForm />
       <MenuBtnDiv>
         <div ref={menuRef}>
           <MenuButton onClick={() => setMenuOpen(!menuOpen)}>☰</MenuButton>
