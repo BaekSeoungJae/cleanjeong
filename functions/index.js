@@ -12,6 +12,9 @@ exports.logIp = functions.https.onRequest((req, res) => {
     const userAgent = req.headers["user-agent"] || "unknown";
     const referer = req.headers["referer"] || "unknown";
 
+    if (referer.includes("vercel.app")) {
+      return res.status(200).send("IP Logging Skipped: Referer is from Vercel");
+    }
     const logData = {
       ip,
       userAgent,
