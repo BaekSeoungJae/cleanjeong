@@ -11,6 +11,7 @@ import PageShop from "./pages/PageShop";
 import PageEx from "./pages/PageEx";
 import NewMainPage from "./pages/NewMainPage";
 import PopupAd from "./pages/PopupAd";
+import AdminPage from "./pages/AdminPage";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/ex" element={<PageEx />} />
           </Route>
           <Route path="/popup" element={<PopupAd />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </Router>
     </>

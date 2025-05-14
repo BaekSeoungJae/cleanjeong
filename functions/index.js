@@ -16,7 +16,7 @@ exports.logIp = functions.https.onRequest((req, res) => {
       ip,
       userAgent,
       referer,
-      timestamp: new Date().toISOString(),
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
     };
 
     admin
