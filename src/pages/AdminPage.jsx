@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { initializeApp } from "firebase/app";
 import {
@@ -145,18 +145,21 @@ const AdminPage = () => {
   const [logs, setLogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
-  const [startDate, setStartDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
-  const [endDate, setEndDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
+
+  const today = new Date();
+  const todayKST = new Date(
+    today.getTime() + today.getTimezoneOffset() * 60000 + 9 * 60 * 60000
+  ); // 한국 시간
+  const todayStr = todayKST.toISOString().split("T")[0]; // yyyy-mm-dd 형식
+  const [startDate, setStartDate] = useState(todayStr);
+  const [endDate, setEndDate] = useState(todayStr);
+
   const [auth, setAuth] = useState(false);
   const [adminId, setAdminId] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [error, setError] = useState("");
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 7;
 
   const checkLogin = async () => {
     try {
