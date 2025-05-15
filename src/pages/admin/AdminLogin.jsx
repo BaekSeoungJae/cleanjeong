@@ -17,7 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// styled-components
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
