@@ -92,7 +92,7 @@ const Th = styled.th`
   color: white;
   padding: 12px;
   font-size: 14px;
-  word-break: break-word; /* 줄바꿈 강제 */
+  word-break: break-word;
   max-width: 300px; /* 셀 최대 너비 제한 */
 `;
 
