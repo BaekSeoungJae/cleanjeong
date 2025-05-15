@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 // import CleanJeong from "./pages/CleanJeong";
 import Introduce from "./pages/Introduce";
@@ -11,7 +16,8 @@ import PageShop from "./pages/PageShop";
 import PageEx from "./pages/PageEx";
 import NewMainPage from "./pages/NewMainPage";
 import PopupAd from "./pages/PopupAd";
-import AdminPage from "./pages/AdminPage";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 const App = () => {
   return (
@@ -29,7 +35,10 @@ const App = () => {
             <Route path="/ex" element={<PageEx />} />
           </Route>
           <Route path="/popup" element={<PopupAd />} />
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="logs" />} />
+            <Route path="logs" element={<AdminDashboard />} />
+          </Route>
         </Routes>
       </Router>
     </>
