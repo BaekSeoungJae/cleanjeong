@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Logo from "../img/클린정로고.png";
 import { Link } from "react-router-dom";
+import PrivacyModal from "./PrivacyModal";
 
 const Container = styled.div`
   width: 100%;
@@ -22,8 +23,8 @@ const LogoSide = styled.div`
   width: 15%;
   height: 95%;
   @media (max-width: 768px) {
-    width: 90%;
-    height: 20%;
+    width: 95%;
+    height: 15%;
   }
 `;
 
@@ -35,6 +36,7 @@ const HeaderLogo = styled(Link)`
   justify-content: flex-end;
   @media (max-width: 768px) {
     width: 100%;
+    height: 100%;
   }
 `;
 
@@ -50,9 +52,9 @@ const CleanLogo = styled.div`
   background-color: white;
   border-radius: 100px;
   @media (max-width: 768px) {
-    width: 50px;
-    min-width: 50px;
-    height: 50px;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
   }
 `;
 
@@ -69,6 +71,17 @@ const LeftSide = styled.div`
     height: 70%;
     border-right: none;
   }
+`;
+
+const PrivacyText = styled.div`
+  width: 90%;
+  height: 15%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
 `;
 
 const LeftText = styled.div`
@@ -104,11 +117,13 @@ const RightSide = styled.div`
   align-items: center;
   flex-direction: row;
   @media (max-width: 768px) {
-    display: none;
+    width: 100%;
+    height: 30px;
   }
 `;
 
 const Footer = () => {
+  const [isModalOpen, setModalOpen] = useState(false); // ← 상태 추가
   return (
     <>
       <Container>
@@ -127,8 +142,13 @@ const Footer = () => {
           <LeftText>Email : cyy8300@naver.com</LeftText>
           <LeftText2>Copyright 2025. 클린정 Co. All rights reserved</LeftText2>
         </LeftSide>
-        <RightSide></RightSide>
+        <RightSide>
+          <PrivacyText onClick={() => setModalOpen(true)}>
+            개인정보처리방침
+          </PrivacyText>
+        </RightSide>
       </Container>
+      {isModalOpen && <PrivacyModal onClose={() => setModalOpen(false)} />}
     </>
   );
 };
