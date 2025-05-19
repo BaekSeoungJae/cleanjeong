@@ -182,7 +182,7 @@ const CallButton = styled.a`
   text-decoration: none;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
-  z-index: 999;
+  z-index: 997;
 
   &:hover {
     background-color: #1a3ca1;
@@ -210,7 +210,7 @@ const TopButton = styled.button`
   border-radius: 50px;
   cursor: pointer;
   transition: opacity 0.3s ease;
-  z-index: 999;
+  z-index: 9;
 
   &:hover {
     background-color: #5e7ee0;
