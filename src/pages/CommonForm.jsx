@@ -277,7 +277,7 @@ const CommonForm = () => {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("010-7977-0204").then(() => {
+    navigator.clipboard.writeText("010-8337-2267").then(() => {
       toast.success("전화번호가 복사되었습니다.", {
         position: "bottom-center",
         autoClose: 1000,
@@ -324,9 +324,9 @@ const CommonForm = () => {
         onMouseLeave={() => setHovered(false)}
         onClick={handleCopy}
       >
-        {hovered ? "010-7977-0204" : "📞 전화상담"}
+        {hovered ? "010-8337-2267" : "📞 전화상담"}
       </CallButtonPC>
-      <CallButton href="tel:010-7977-0204">📞</CallButton>
+      <CallButton href="tel:010-8337-2267">📞</CallButton>
       <TopButton show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>
