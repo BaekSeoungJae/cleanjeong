@@ -12,6 +12,23 @@ import { FaCheckCircle } from "react-icons/fa";
 import PopupAd from "./PopupAd";
 import FirebaseForm from "../components/FirebaseForm";
 
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+// ✅ Firebase 설정
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const Background = styled.div`
   width: 100%;
   min-height: 950px;
@@ -86,7 +103,7 @@ const BlogButtonM = styled.a`
   justify-content: center;
   bottom: 75px;
   right: 25px;
-  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  background-image: ${({ $imageurl }) => `url(${$imageurl})`};
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -199,7 +216,7 @@ const CallButton = styled.a`
 const TopButton = styled.button`
   width: 50px;
   height: 50px;
-  display: ${({ show }) => (show ? "block" : "none")};
+  display: ${({ $show }) => ($show ? "block" : "none")};
   position: fixed;
   bottom: 80px;
   right: 50px;
@@ -232,6 +249,22 @@ const CommonForm = () => {
   const [showTopButton, setShowTopButton] = useState(false); // 🔹 TOP 버튼 상태 추가
   const [hovered, setHovered] = useState(false); //전화버튼 호버 상태
   const [bHovered, setBhovered] = useState(false); //블로그버튼 호버 상태
+  const [phoneNumber, setPhoneNumber] = useState("010-0000-0000");
+
+  useEffect(() => {
+    const fetchPhoneNumber = async () => {
+      try {
+        const docRef = doc(db, "config", "contact");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setPhoneNumber(docSnap.data().phone);
+        }
+      } catch (error) {
+        console.error("전화번호 불러오기 실패:", error);
+      }
+    };
+    fetchPhoneNumber();
+  }, []);
 
   // 페이지 이동 시 최상단으로 스크롤 이동
   useEffect(() => {
@@ -277,7 +310,7 @@ const CommonForm = () => {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("010-8337-2267").then(() => {
+    navigator.clipboard.writeText(phoneNumber).then(() => {
       toast.success("전화번호가 복사되었습니다.", {
         position: "bottom-center",
         autoClose: 1000,
@@ -317,17 +350,17 @@ const CommonForm = () => {
         href="https://blog.naver.com/cleanjeong-official"
         target="_blank"
         rel="noopener noreferrer"
-        imageurl={BIcon}
+        $imageurl={BIcon}
       />
       <CallButtonPC
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={handleCopy}
       >
-        {hovered ? "010-8337-2267" : "📞 전화상담"}
+        {hovered ? phoneNumber : "📞 전화상담"}
       </CallButtonPC>
-      <CallButton href="tel:010-8337-2267">📞</CallButton>
-      <TopButton show={showTopButton} onClick={scrollToTop}>
+      <CallButton href={`tel:${phoneNumber}`}>📞</CallButton>
+      <TopButton $show={showTopButton} onClick={scrollToTop}>
         <AiOutlineUp size={window.innerWidth > 768 ? 21 : 18} />
       </TopButton>
       <PopupAd />

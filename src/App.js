@@ -18,6 +18,7 @@ import NewMainPage from "./pages/NewMainPage";
 import PopupAd from "./pages/PopupAd";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminNumber from "./pages/admin/AdminNumber";
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Navigate to="logs" />} />
             <Route path="logs" element={<AdminDashboard />} />
+            <Route path="numbers" element={<AdminNumber />} />
           </Route>
         </Routes>
       </Router>

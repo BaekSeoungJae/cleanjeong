@@ -34,9 +34,10 @@ const MenuItem = styled.div`
   cursor: pointer;
   font-weight: bold;
   &:hover {
-    text-decoration: underline;
+    color: black;
   }
 `;
+
 const LogOutBtn = styled.div`
   width: 80px;
   height: 40px;
@@ -86,7 +87,9 @@ const AdminLayout = () => {
     <LayoutWrapper>
       <Sidebar>
         <MenuItem onClick={() => navigate("/admin/logs")}>IP 수집</MenuItem>
-        {/* <MenuItem onClick={() => navigate("/admin/numbers")}>번호 관리</MenuItem> */}
+        <MenuItem onClick={() => navigate("/admin/numbers")}>
+          번호 관리
+        </MenuItem>
         {/* <MenuItem onClick={() => navigate("/admin/numbers")}>배너 관리</MenuItem> */}
         <LogOutBtn
           onClick={() => {
