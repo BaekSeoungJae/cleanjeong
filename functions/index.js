@@ -3,31 +3,43 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp();
 
-const ALLOWED_ORIGIN = "https://www.cleanjeong.com";
+const ALLOWLIST = new Set([
+  "https://www.cleanjeong.com",
+  "https://cleanjeong.com",
+  // "https://staging.cleanjeong.com",
+]);
 
 exports.logIp = functions
   .region("us-central1")
   .https.onRequest(async (req, res) => {
-    // 1) 공통 CORS 헤더 (항상 먼저 세팅)
-    res.set("Vary", "Origin");
-    const origin = req.headers.origin;
-    if (origin === ALLOWED_ORIGIN) {
-      res.set("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
-      // res.set("Access-Control-Allow-Credentials", "true"); // 필요 시만
+    // ---- 공통 CORS 헤더 세팅 ----
+    res.set("Vary", "Origin, Access-Control-Request-Headers"); // 캐시 안전
+
+    const origin = req.headers.origin || "";
+    const allowOrigin = ALLOWLIST.has(origin) ? origin : "";
+    if (allowOrigin) {
+      res.set("Access-Control-Allow-Origin", allowOrigin);
+      // 프런트에서 credentials 쓴다면 true 필요
+      res.set("Access-Control-Allow-Credentials", "true");
     }
+
+    // 브라우저가 요구한 헤더 그대로 반사(없으면 안전 기본값)
+    const reqAclReqHeaders =
+      req.headers["access-control-request-headers"] || "Content-Type";
+    res.set("Access-Control-Allow-Headers", reqAclReqHeaders);
+
+    // 허용 메서드 명시
     res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.set(
-      "Access-Control-Allow-Headers",
-      "Content-Type, X-Requested-With, Authorization"
-    );
+
+    // 프리플라이트 캐시
     res.set("Access-Control-Max-Age", "3600");
 
-    // 2) 프리플라이트(OPTIONS) 빠른 종료
+    // ---- 프리플라이트 빠른 종료 ----
     if (req.method === "OPTIONS") {
-      return res.status(204).send("");
+      return res.status(204).send(""); // 헤더는 위에서 이미 세팅됨
     }
 
-    // 3) 메서드 제한
+    // ---- 메서드 제한 ----
     if (req.method !== "POST") {
       return res.status(405).send("Method Not Allowed");
     }
@@ -40,11 +52,6 @@ exports.logIp = functions
       const userAgent = req.headers["user-agent"] || "unknown";
       const referer = req.headers["referer"] || "unknown";
 
-      // 필요하면 유지, 아니면 제거
-      // if (referer.includes("vercel.app")) {
-      //   return res.status(200).send("IP Logging Skipped: Referer is from Vercel");
-      // }
-
       await admin
         .firestore()
         .collection("ipLogs")
@@ -52,15 +59,14 @@ exports.logIp = functions
           ip,
           userAgent,
           referer,
-          // 프런트에서 보낸 공개 IP도 기록하려면 아래 같이 병합
           clientIpFromBody: (req.body && req.body.ip) || null,
           timestamp: admin.firestore.FieldValue.serverTimestamp(),
         });
 
       return res.status(200).json({ ok: true });
-    } catch (error) {
-      console.error("Error logging IP:", error);
-      // 에러 응답에도 CORS 헤더가 유지되도록 try/catch 안에서 반환
+    } catch (err) {
+      console.error("Error logging IP:", err);
+      // 에러 시에도 CORS 헤더 유지됨(위에서 이미 세팅)
       return res.status(500).json({ ok: false, error: "internal" });
     }
   });
