@@ -3,14 +3,14 @@ import { useEffect } from "react";
 const FirebaseForm = () => {
   useEffect(() => {
     fetch("https://api64.ipify.org?format=json")
-      .then((r) => r.json())
-      .then(({ ip }) => {
-        const url = `https://us-central1-cleanjung-v1.cloudfunctions.net/logIp?ip=${encodeURIComponent(
-          ip || ""
-        )}`;
-        return fetch(url, { method: "GET", mode: "cors", keepalive: true });
-      })
-      .catch((e) => console.error("IP log failed:", e));
+      .then((res) => res.json())
+      .then((data) => {
+        fetch("https://us-central1-cleanjung-v1.cloudfunctions.net/logIp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ip: data.ip }),
+        });
+      });
   }, []);
 
   return null;
