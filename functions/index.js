@@ -12,31 +12,48 @@ const ALLOWLIST = new Set([
 exports.logIp = functions
   .region("us-central1")
   .https.onRequest(async (req, res) => {
-    // ---- 공통 CORS 헤더 세팅 ----
-    res.set("Vary", "Origin, Access-Control-Request-Headers"); // 캐시 안전
+    // ---- 디버그 태그 (현재 배포 버전 가시화) ----
+    res.set("X-CORS-Probe", "logIp@2025-11-11T1456+0900");
 
+    // ---- 공통 CORS 헤더 세팅 (항상 최우선) ----
     const origin = req.headers.origin || "";
-    const allowOrigin = ALLOWLIST.has(origin) ? origin : "";
-    if (allowOrigin) {
-      res.set("Access-Control-Allow-Origin", allowOrigin);
-      // 프런트에서 credentials 쓴다면 true 필요
-      res.set("Access-Control-Allow-Credentials", "true");
-    }
-
-    // 브라우저가 요구한 헤더 그대로 반사(없으면 안전 기본값)
     const reqAclReqHeaders =
-      req.headers["access-control-request-headers"] || "Content-Type";
-    res.set("Access-Control-Allow-Headers", reqAclReqHeaders);
+      req.headers["access-control-request-headers"] || "";
 
-    // 허용 메서드 명시
+    // 캐시 안전
+    res.set("Vary", "Origin, Access-Control-Request-Headers");
+
+    // 기본 허용 메서드
     res.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+
+    // 브라우저가 요구한 헤더 그대로 반사 (없으면 기본값)
+    res.set(
+      "Access-Control-Allow-Headers",
+      reqAclReqHeaders || "Content-Type, Authorization, X-Requested-With"
+    );
 
     // 프리플라이트 캐시
     res.set("Access-Control-Max-Age", "3600");
 
-    // ---- 프리플라이트 빠른 종료 ----
+    // Origin 매칭
+    const isAllowed = ALLOWLIST.has(origin);
+    if (isAllowed) {
+      res.set("Access-Control-Allow-Origin", origin);
+      // 쿠키/세션을 쓸 가능성 고려해 항상 켜둠(프런트에서 include 안 쓰면 영향 없음)
+      res.set("Access-Control-Allow-Credentials", "true");
+    } else {
+      // 디버깅에 도움되는 로그
+      console.log("CORS block - origin not allowed:", origin);
+    }
+
+    // ---- 프리플라이트(OPTIONS) 빠른 종료 (반드시 헤더 세팅 후) ----
     if (req.method === "OPTIONS") {
-      return res.status(204).send(""); // 헤더는 위에서 이미 세팅됨
+      // 혹시 allowlist 미스매치여도 프리플라이트 단계에서만
+      // 최소한의 진단을 위해 안전 오리진을 강제 세팅하고 종료할 수 있음.
+      // 필요시 아래 2줄 주석 해제하여 테스트(임시):
+      // if (!isAllowed) res.set("Access-Control-Allow-Origin", "https://www.cleanjeong.com");
+      // if (!isAllowed) res.set("Access-Control-Allow-Credentials", "true");
+      return res.status(204).send("");
     }
 
     // ---- 메서드 제한 ----
@@ -66,7 +83,6 @@ exports.logIp = functions
       return res.status(200).json({ ok: true });
     } catch (err) {
       console.error("Error logging IP:", err);
-      // 에러 시에도 CORS 헤더 유지됨(위에서 이미 세팅)
       return res.status(500).json({ ok: false, error: "internal" });
     }
   });
